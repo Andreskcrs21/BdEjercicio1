@@ -1,0 +1,54 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package conexionbasedatos;
+
+import com.istloja.conexionbd.BdEjercicio1;
+import com.istloja.controlador.Personabd;
+import com.istloja.modelo.Persona;
+
+/**
+ *
+ * @author IdeaPad - S340
+ */
+public class ConexionBaseDatos {
+    public static void main(String[] args) {
+        BdEjercicio1 con = new BdEjercicio1();
+        con.getConexion();
+        
+        Persona p = new Persona();
+        /*Personabd bd = new Personabd();
+        
+        p.setIdPersona(1);
+        p.setCedula("1105907834");
+        p.setNombres("Andres");
+        p.setApellidos("Caceres");
+        p.setDireccion("Carigan");
+        p.setCorreo("andreskcrs282@gmail.com");
+        p.setTelefono("0997778422");
+        
+        if (bd.registrarPersona(p)) {
+            System.out.println("Registrado con Exito");
+        }else{
+            System.out.println("Error al registrar");
+        }*/
+        
+        /*Personabd per = new Personabd();
+        per.editarpersona();
+        if (per.editarpersona()) {
+            System.out.println("Modificado Correctamente");
+        }else{
+            System.out.println("Error al modificar");
+        }*/
+        
+        Personabd eli = new Personabd();
+        eli.eliminarpersona();
+        if (eli.eliminarpersona()) {
+            System.out.println("Eliminado Correctamente");
+        }else{
+            System.out.println("Error al Eliminar");
+        }
+    }
+}

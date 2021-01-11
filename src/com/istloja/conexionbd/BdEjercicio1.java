@@ -1,5 +1,5 @@
 
-package bdejercicio1;
+package com.istloja.conexionbd;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class BdEjercicio1 {
-    private final String base = "bdEjercicio1";
+    private final String base = "persona";
     private final String user = "root";
     private final String password = "chateo282";
     private final String url = "jdbc:mysql://Localhost:3306/" + base;
@@ -29,10 +29,7 @@ public class BdEjercicio1 {
         return con;
     }
     
-    public static void main(String[] args) {
-        BdEjercicio1 con = new BdEjercicio1();
-        con.getConexion();
-    }
+   
     
     
 }
