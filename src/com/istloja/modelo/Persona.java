@@ -14,7 +14,7 @@ public class Persona {
     private String correo;
     private String telefono;
 
-    /*public Persona(int idPersona, String cedula, String nombres, String apellidos, String direccion, String correo, String telefono) {
+    public Persona(int idPersona, String cedula, String nombres, String apellidos, String direccion, String correo, String telefono) {
         this.idPersona = idPersona;
         this.cedula = cedula;
         this.nombres = nombres;
@@ -22,10 +22,8 @@ public class Persona {
         this.direccion = direccion;
         this.correo = correo;
         this.telefono = telefono;
-    */
-
     
-
+    }
     public int getIdPersona() {
         return idPersona;
     }
