@@ -33,16 +33,18 @@ public class VistaPersona extends JFrame {
         panel.add(label);
         //this.add(panel);`
         //this.add(panelTitulo);
-        panelCuerpo.setLayout(new GridLayout(5,5));
-        panelCuerpo.add(new JLabel("CÉDULA"));
+        panelCuerpo.setLayout(new GridLayout(6,6));
+        panelCuerpo.add(new JLabel("Cédula"));
         panelCuerpo.add(new JTextField("1105907834"));
-        panelCuerpo.add(new JLabel("NOMBRE"));
+        panelCuerpo.add(new JLabel("Nombre"));
         panelCuerpo.add(new JTextField("Andres"));
-        panelCuerpo.add(new JLabel("APELLIDO"));
+        panelCuerpo.add(new JLabel("Apellido"));
         panelCuerpo.add(new JTextField("Caceres"));
-        panelCuerpo.add(new JLabel("DIRECCIÓN"));
+        panelCuerpo.add(new JLabel("Direccion"));
         panelCuerpo.add(new JTextField("Carigan"));
-        panelCuerpo.add(new JLabel("TELEFONO"));
+        panelCuerpo.add(new JLabel("Correo"));
+        panelCuerpo.add(new JTextField("cacaceres@tecnologicoloja.edu.ec"));
+        panelCuerpo.add(new JLabel("Telefono"));
         panelCuerpo.add(new JTextField("0997778422"));
         
         panel.add(panelCuerpo);
