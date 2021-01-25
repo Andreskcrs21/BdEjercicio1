@@ -5,7 +5,9 @@
         <group>
             <file>file:/D:/Archivos/Documentos/NetBeansProjects/bdEjercicio1/src/com/istloja/controlador/Personabd.java</file>
             <file>file:/D:/Archivos/Documentos/NetBeansProjects/bdEjercicio1/src/com/istl/vista/VistaPersona.java</file>
+            <file>file:/D:/Archivos/Documentos/NetBeansProjects/bdEjercicio1/src/com/istloja/utilidad/Utilidades.java</file>
             <file>file:/D:/Archivos/Documentos/NetBeansProjects/bdEjercicio1/src/com/istloja/modelo/Persona.java</file>
+            <file>file:/D:/Archivos/Documentos/NetBeansProjects/bdEjercicio1/src/com/istl/vista/Registro.java</file>
             <file>file:/D:/Archivos/Documentos/NetBeansProjects/bdEjercicio1/src/conexionbasedatos/ConexionBaseDatos.java</file>
             <file>file:/D:/Archivos/Documentos/NetBeansProjects/bdEjercicio1/src/com/istloja/conexionbd/BdEjercicio1.java</file>
         </group>

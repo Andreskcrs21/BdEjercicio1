@@ -22,7 +22,7 @@ public class VistaPersona extends JFrame {
         //titulo de la ventana
         this.setTitle("Ventana");
         //tmaño de la ventana
-        this.setSize(300,200);
+        this.setSize(500,300);
         //panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
         
         //EL layout se encarga de ordenar o Distribuir los componentes

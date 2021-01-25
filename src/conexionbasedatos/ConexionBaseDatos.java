@@ -5,6 +5,7 @@
  */
 package conexionbasedatos;
 
+import com.istl.vista.Registro;
 import com.istl.vista.VistaPersona;
 import com.istloja.conexionbd.BdEjercicio1;
 import com.istloja.controlador.Personabd;
@@ -19,7 +20,10 @@ public class ConexionBaseDatos {
         BdEjercicio1 con = new BdEjercicio1();
         con.getConexion();
         
-        VistaPersona pe = new VistaPersona();
+        
+        
+        //VistaPersona pe = new VistaPersona();
+        
         
         
         
