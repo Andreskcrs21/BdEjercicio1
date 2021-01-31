@@ -52,7 +52,10 @@ public class Utilidades {
     }
    
     public boolean validarNumeros(String numero){
-        
+        //COleccion de caracteres
+        if (numero.charAt(0)!='0') { //Validar que un numero de telefono empieze con cero
+            return false;
+        }
         if (numero.isEmpty()) {
             return false;
         }else if(numero.length()<10){

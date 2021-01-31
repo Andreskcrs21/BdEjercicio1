@@ -8,6 +8,7 @@ package com.istl.vista;
 import com.istloja.controlador.Personabd;
 import com.istloja.modelo.Persona;
 import com.istloja.utilidad.Utilidades;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,6 +20,10 @@ public class Registro extends javax.swing.JFrame {
     //private Persona Personabd;
     private Personabd controladorPersona;
     private Utilidades utilidades;
+    private Persona personaEditar;
+    private Persona personaEliminar;
+    private Persona personaBuscar;
+    
     /**
      * Creates new form Registro
      */
@@ -26,6 +31,7 @@ public class Registro extends javax.swing.JFrame {
         initComponents();
         utilidades = new Utilidades();
         controladorPersona = new Personabd();
+        
     }
     void limpiar(){
         txtcedula.setText("");
@@ -60,6 +66,9 @@ public class Registro extends javax.swing.JFrame {
         txtdireccion = new javax.swing.JTextField();
         txttelefono = new javax.swing.JTextField();
         txtcorreo = new javax.swing.JTextField();
+        botbuscarcedula = new javax.swing.JButton();
+        botbuscartelefono = new javax.swing.JButton();
+        botbuscarapellido = new javax.swing.JButton();
         botguardar = new javax.swing.JButton();
         boteditar = new javax.swing.JButton();
         boteliminar = new javax.swing.JButton();
@@ -91,38 +100,63 @@ public class Registro extends javax.swing.JFrame {
             }
         });
 
+        botbuscarcedula.setText("Buscar");
+        botbuscarcedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botbuscarcedulaActionPerformed(evt);
+            }
+        });
+
+        botbuscartelefono.setText("Buscar");
+        botbuscartelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botbuscartelefonoActionPerformed(evt);
+            }
+        });
+
+        botbuscarapellido.setText("Buscar");
+        botbuscarapellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botbuscarapellidoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botbuscarcedula))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(58, 58, 58)
-                        .addComponent(txtapellidos))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(58, 58, 58)
-                        .addComponent(txtnombre))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(69, 69, 69)
-                        .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel6))
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3))
                         .addGap(56, 56, 56)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txttelefono)
-                            .addComponent(txtdireccion))))
-                .addGap(30, 30, 30))
+                            .addComponent(txtdireccion)
+                            .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(botbuscartelefono))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtapellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(botbuscarapellido)))))
+                .addGap(16, 16, 16))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,15 +164,17 @@ public class Registro extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botbuscarcedula))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtapellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtapellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botbuscarapellido))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -146,7 +182,8 @@ public class Registro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botbuscartelefono))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -162,10 +199,25 @@ public class Registro extends javax.swing.JFrame {
         });
 
         boteditar.setText("Editar");
+        boteditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boteditarActionPerformed(evt);
+            }
+        });
 
         boteliminar.setText("Eliminar");
+        boteliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boteliminarActionPerformed(evt);
+            }
+        });
 
         bottraer.setText("Traer");
+        bottraer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bottraerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -217,42 +269,40 @@ public class Registro extends javax.swing.JFrame {
     private void txtcedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcedulaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtcedulaActionPerformed
-
-    private void botguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botguardarActionPerformed
-        
-        if (txtcedula.getText().isEmpty()) {
+    public Persona guardarEditar(){
+    if (txtcedula.getText().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "El campo Cedula no tiene datos","ERROR",JOptionPane.ERROR_MESSAGE);
             txtcedula.requestFocus(); // sirve para ubicar el cursor en el cuadro de texto
-            return;
+            return null;
         }if (txtnombre.getText().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "El campo Nombres no tiene datos","ERROR",JOptionPane.ERROR_MESSAGE);
             txtnombre.requestFocus();
-            return;
+            return null;
         }if (txtapellidos.getText().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "El campo Apellidos no tiene datos","ERROR",JOptionPane.ERROR_MESSAGE);
             txtapellidos.requestFocus();
-            return;
+            return null;
         }if (txtdireccion.getText().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "El campo Direccion no tiene datos","ERROR",JOptionPane.ERROR_MESSAGE);
             txtdireccion.requestFocus();
-            return;
+            return null;
         }if (txttelefono.getText().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "El campo Telefono no tiene datos","ERROR",JOptionPane.ERROR_MESSAGE);
             txttelefono.requestFocus();
-            return;
+            return null;
             
         }if (!utilidades.validarNumeros(txttelefono.getText())) {
             JOptionPane.showMessageDialog(rootPane, "Los datos ingresados en el telefono no son validos.","ERROR",JOptionPane.ERROR_MESSAGE);
             txttelefono.requestFocus();
-            return;
+            return null;
         }if (txtcorreo.getText().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "El campo Correo no tiene datos","ERROR",JOptionPane.ERROR_MESSAGE);
             txtcorreo.requestFocus();
-            return;
+            return null;
         }if (!utilidades.validarCorreo(txtcorreo.getText())) {
             JOptionPane.showMessageDialog(rootPane, "Los datos ingresados en el correo son invalidos","ERROR",JOptionPane.ERROR_MESSAGE);
             txtcorreo.requestFocus();
-            return;
+            return null;
         }
         
         Persona persona = new Persona();
@@ -263,14 +313,141 @@ public class Registro extends javax.swing.JFrame {
         persona.setTelefono(txttelefono.getText());
         persona.setCorreo(txtcorreo.getText());
         System.out.println(persona.toString());
-        if (controladorPersona.registrarPersona(persona)) {
+        return persona;
+        /*if (controladorPersona.registrarPersona(persona)) {
             JOptionPane.showMessageDialog(rootPane, "Persona registrada en el sistema.");
             limpiar();
         }else{
             JOptionPane.showMessageDialog(rootPane, "No se puede guardar la persona","ERROR",JOptionPane.ERROR_MESSAGE);
+        }*/
+    
+    
+    }
+    private void botguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botguardarActionPerformed
+        if (controladorPersona.buscarpersona(txtcedula.getText())!=null) {
+            JOptionPane.showMessageDialog(rootPane, "El numero de cedula ya se encuentra registrado en el sistema");
+        }else{
+            Persona personaGuardar = guardarEditar();
+        if (personaGuardar != null) {
+            if(controladorPersona.registrarPersona(personaGuardar)){
+            JOptionPane.showMessageDialog(rootPane, "Persona registrada correctamente");
+            limpiar();
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "No se puede guardar la persona");
         }
+        }       
+              
+        }
+        
     }//GEN-LAST:event_botguardarActionPerformed
 
+    private void boteditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boteditarActionPerformed
+        //Persona personaEditar = guardarEditar();
+        if (personaEditar == null) {
+            JOptionPane.showMessageDialog(rootPane, "No hay una persona seleccionada para editar");
+            return;
+        }
+        Persona personaEditarLocal = guardarEditar();
+        if (personaEditarLocal != null) {
+            personaEditarLocal.setIdPersona(personaEditar.getIdPersona());
+            if (controladorPersona.editarpersona(personaEditarLocal)) {
+                JOptionPane.showMessageDialog(rootPane, "Persona editada con exito");
+                limpiar();
+                personaEditar= null;
+                
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "No se puede editar la persona");
+            }
+            
+        }
+    }//GEN-LAST:event_boteditarActionPerformed
+
+    private void bottraerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bottraerActionPerformed
+        List<Persona>obtenerPersonas = controladorPersona.obtenerPersonas();
+        personaEditar = obtenerPersonas.get(obtenerPersonas.size()-1);
+        txtcedula.setText(personaEditar.getCedula());
+        txtnombre.setText(personaEditar.getNombres());
+        txtapellidos.setText(personaEditar.getApellidos());
+        txtdireccion.setText(personaEditar.getDireccion());
+        txtcorreo.setText(personaEditar.getCorreo());
+        txttelefono.setText(personaEditar.getTelefono());
+    }//GEN-LAST:event_bottraerActionPerformed
+
+    private void boteliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boteliminarActionPerformed
+        if (personaEditar == null) {
+            JOptionPane.showMessageDialog(rootPane, "No hay persona seleccionada para eliminar");
+            return;
+        }
+        Persona personaEliminarLocal = guardarEditar();
+        if (personaEliminarLocal != null) {
+            personaEliminarLocal.setIdPersona(personaEditar.getIdPersona());
+            if (controladorPersona.eliminarpersona(personaEliminarLocal)) {
+                JOptionPane.showMessageDialog(rootPane, "Persona eliminada correctamente");
+                limpiar();
+                personaEditar = null;
+                
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "Error al eliminar");
+            }
+        }
+    }//GEN-LAST:event_boteliminarActionPerformed
+
+    private void botbuscarcedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botbuscarcedulaActionPerformed
+        Persona persona = controladorPersona.buscarpersona(txtcedula.getText());
+        personaEditar = persona;
+        if (persona != null) {
+            txtcedula.setText(persona.getCedula());
+            txtnombre.setText(persona.getNombres());
+            txtapellidos.setText(persona.getApellidos());
+            txtdireccion.setText(persona.getDireccion());
+            txttelefono.setText(persona.getTelefono());
+            txtcorreo.setText(persona.getCorreo());
+            
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "No hay ninguna persona registrada con esta cedula");
+            txtcedula.setText("");
+            txtcedula.requestFocus();
+        
+        }
+    }//GEN-LAST:event_botbuscarcedulaActionPerformed
+
+    private void botbuscartelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botbuscartelefonoActionPerformed
+       Persona telefono = controladorPersona.buscartelefono(txttelefono.getText());
+       personaEditar = telefono;
+       if (telefono != null) {
+            txtcedula.setText(telefono.getCedula());
+            txtnombre.setText(telefono.getNombres());
+            txtapellidos.setText(telefono.getApellidos());
+            txtdireccion.setText(telefono.getDireccion());
+            txttelefono.setText(telefono.getTelefono());
+            txtcorreo.setText(telefono.getCorreo());
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "No hay ninguna persona registrada con este numero de celular");
+            txttelefono.setText("");
+            txttelefono.requestFocus();
+        
+        }
+       
+    }//GEN-LAST:event_botbuscartelefonoActionPerformed
+
+    private void botbuscarapellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botbuscarapellidoActionPerformed
+        Persona apellidos = controladorPersona.buscarapellido(txtapellidos.getText());
+        personaEditar = apellidos;
+       if (apellidos != null) {
+            txtcedula.setText(apellidos.getCedula());
+            txtnombre.setText(apellidos.getNombres());
+            txtapellidos.setText(apellidos.getApellidos());
+            txtdireccion.setText(apellidos.getDireccion());
+            txttelefono.setText(apellidos.getTelefono());
+            txtcorreo.setText(apellidos.getCorreo());
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "No hay ninguna persona registrada con este apellido");
+            txtapellidos.setText("");
+            txtapellidos.requestFocus();
+        
+        }
+    }//GEN-LAST:event_botbuscarapellidoActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -307,6 +484,9 @@ public class Registro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botbuscarapellido;
+    private javax.swing.JButton botbuscarcedula;
+    private javax.swing.JButton botbuscartelefono;
     private javax.swing.JButton boteditar;
     private javax.swing.JButton boteliminar;
     private javax.swing.JButton botguardar;
