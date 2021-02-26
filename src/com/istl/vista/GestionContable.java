@@ -893,7 +893,7 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
                 JOptionPane.showMessageDialog(rootPane, "Persona eliminada correctamente");
                 gestionInventario.limpiarcamposProducto();
                 productoEditar = null;
-                actualizarTabla();
+                actualizarTablaProductos();
                 
             }else{
                 JOptionPane.showMessageDialog(rootPane, "Error al eliminar");
@@ -909,7 +909,7 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
     void actualizarTablaProductos(){
         List<Inventario> tablaActualizadas = controladorInventario.obtenerProductos();
         
-        //modelTableProductos.setInventario(tablaActualizadas);
+        modelTableProductos.setInventario(tablaActualizadas);
         modelTableProductos.fireTableDataChanged();
     }
     private void menuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSalirActionPerformed
@@ -1037,7 +1037,7 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
                 if(controladorInventario.registrarInventario(productoGuardar)){
                     JOptionPane.showMessageDialog(rootPane, "Producto registrada correctamente");
                     gestionInventario.limpiarcamposProducto();
-                    actualizarTabla();
+                    actualizarTablaProductos();
                 }else{
                     JOptionPane.showMessageDialog(rootPane, "No se puede guardar el producto");
                 }

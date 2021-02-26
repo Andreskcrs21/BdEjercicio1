@@ -67,10 +67,10 @@ public class modelTableProductos extends AbstractTableModel{
          return super.isCellEditable(rowIndex, columnIndex);
     }
     
-     public List<Inventario> getProveedoreses(){
+     public List<Inventario> geInventarios(){
         return inventario;
     }
-    public void setProveedores(List<Proveedores> proveedores){
+    public void setInventario(List<Inventario> inventario){
         this.inventario = inventario;
     }
     
