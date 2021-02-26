@@ -1,6 +1,7 @@
 
-package com.istl.vista;
+package com.istloja.modelTables;
 
+import com.istl.vista.GestionContable;
 import com.istloja.modelo.Persona;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -10,11 +11,13 @@ import javax.swing.table.AbstractTableModel;
  * @author IdeaPad - S340
  */
 public class ModelTablePersonaV2 extends AbstractTableModel{
-    public String[] m_colNames = {"Cedula", "Nombres", "Apellidos", "Direccion", "Telefono", "Correo"};
-    public List<Persona>personas;
+    private String[] m_colNames = {"Cedula", "Nombres", "Apellidos", "Direccion", "Telefono", "Correo"};
+    private List<Persona>personas;
+    private GestionContable gContable;
 
-    public ModelTablePersonaV2(List<Persona> personas) {
+    public ModelTablePersonaV2(List<Persona> personas, GestionContable gContable) {
         this.personas = personas;
+        this.gContable = gContable;
     }
   
     @Override
@@ -50,7 +53,21 @@ public class ModelTablePersonaV2 extends AbstractTableModel{
     }
       @Override
     public String getColumnName(int column) {
-        return m_colNames[column]; //To change body of generated methods, choose Tools | Templates.
+        return m_colNames[column]; // Me va a dar el nombre de una columna
     }
+
+    @Override
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+       gContable.clickPersona(personas.get(rowIndex));
+        return super.isCellEditable(rowIndex, columnIndex); //To change body of generated methods, choose Tools | Templates.
+    }
+    public List<Persona>getPersona(){
+    return personas;
+    }
+    public void setPersonas(List<Persona>personas){
+    this.personas = personas;
+    
+    }
+    
     
 }

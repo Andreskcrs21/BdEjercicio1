@@ -24,8 +24,8 @@ public class Personabd {
         Connection con = null;
         
        
-                
-         String sql = "INSERT INTO persona (`idpersona`, `cedula`, `nombres`, `apellidos`, `direccion`, `correo`, `telefono`) VALUES ('"
+                 
+        String sql = "INSERT INTO persona (`idpersona`, `cedula`, `nombres`, `apellidos`, `direccion`, `correo`, `telefono`) VALUES ('"
                 +String.valueOf(persona.getIdPersona())+"', '"
                 +persona.getCedula()+"', '"
                 +persona.getNombres()+"', '"
@@ -56,7 +56,8 @@ public class Personabd {
         
         Connection con = null; //coenxion con la base de datos
         
-        String sql = "update persona set cedula = '"+persona.getCedula()+"', nombres = '"+persona.getNombres()+"', apellidos='"+persona.getApellidos()+"', direccion='"+persona.getDireccion()+"', correo='"+persona.getCorreo()+"', telefono= '"+persona.getTelefono()+"' where idpersona = '"+String.valueOf(persona.getIdPersona())+"'"; // concatenando la opcion de actualizacion
+        String sql = "update persona set cedula = '"+persona.getCedula()+"', nombres = '"+persona.getNombres()+"', apellidos='"+persona.getApellidos()+"', direccion='"+persona.getDireccion()+"', correo='"+persona.getCorreo()+"', telefono= '"+persona.getTelefono()+"' where (idpersona=" + persona.getIdPersona()+ ")"; // concatenando la opcion de actualizacion
+        
         try {
             BdEjercicio1  conexion = new BdEjercicio1();
             con = conexion.getConexion();
@@ -168,7 +169,42 @@ public class Personabd {
     
     
     }
+     public List<Persona> buscarnombre(String nombre){
+    Connection co = null; //Sirve para conectar con a base de datos
+        Statement stm = null; //Sirve para preparar los datos
+        ResultSet rs = null;//Sentencia de JDBC para obtener valores de la base de datos.
+        Persona a = null;
+        List<Persona> personasEncontradas = new ArrayList<>();
+        
+        String sql = "SELECT * FROM persona.persona where nombres like \"%"+nombre+"%\"";
+        
+        try {
+            co = new BdEjercicio1().getConexion();
+            stm = (Statement) co.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                a = new Persona();
+                a.setIdPersona(rs.getInt(1));
+                a.setCedula(rs.getString(2));
+                a.setNombres(rs.getString(3));
+                a.setApellidos(rs.getString(4));
+                a.setDireccion(rs.getString(5));
+                a.setCorreo(rs.getString(6));
+                a.setTelefono(rs.getString(7));
+                personasEncontradas.add(a);
+                
+            }
+            stm.close();
+            rs.close();
+            co.close();
+        } catch (SQLException e) {
+            System.out.println("Error:"+ e.getMessage());
+        }
+
+        return  personasEncontradas; 
     
+    
+    }
     public boolean eliminarpersona(Persona persona){
         boolean eliminar = false;
     

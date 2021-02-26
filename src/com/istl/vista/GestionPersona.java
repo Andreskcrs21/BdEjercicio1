@@ -22,13 +22,16 @@ public class GestionPersona {
     private JFrame frameGestionContable;
     
 
-    public GestionPersona(JTextField txtcedula, JTextField txtnombre, JTextField txtapellidos, JTextField txtdireccion, JTextField txttelefono, JTextField txtcorreo) {
+    public GestionPersona(JTextField txtcedula, JTextField txtnombre, JTextField txtapellidos, JTextField txtdireccion, JTextField txttelefono, JTextField txtcorreo, Utilidades utilidades, JFrame frameGestionContable) {
         this.txtcedula = txtcedula;
         this.txtnombre = txtnombre;
         this.txtapellidos = txtapellidos;
         this.txtdireccion = txtdireccion;
         this.txttelefono = txttelefono;
         this.txtcorreo = txtcorreo;
+        this.utilidades = utilidades;
+        this.frameGestionContable = frameGestionContable;
+        
     }
 
     public JTextField getTxtcedula() {
@@ -132,14 +135,8 @@ public class GestionPersona {
         persona.setDireccion(txtdireccion.getText());
         persona.setTelefono(txttelefono.getText());
         persona.setCorreo(txtcorreo.getText());
-        System.out.println(persona.toString());
+        //System.out.println(persona.toString());
         return persona;
-        /*if (controladorPersona.registrarPersona(persona)) {
-            JOptionPane.showMessageDialog(rootPane, "Persona registrada en el sistema.");
-            limpiar();
-        }else{
-            JOptionPane.showMessageDialog(rootPane, "No se puede guardar la persona","ERROR",JOptionPane.ERROR_MESSAGE);
-        }*/
     
     
     }

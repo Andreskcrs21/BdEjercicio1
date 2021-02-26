@@ -16,8 +16,8 @@ import com.istloja.modelo.Persona;
  * @author IdeaPad - S340
  */
 public class ConexionBaseDatos {
-    /*public static void main(String[] args) {
-        BdEjercicio1 con = new BdEjercicio1();
+    public static void main(String[] args) {
+        /*BdEjercicio1 con = new BdEjercicio1();
         con.getConexion();*/
         
         
@@ -62,5 +62,5 @@ public class ConexionBaseDatos {
         }else{
             System.out.println("Error al Eliminar");
         }*/
-    
+    }
 }
