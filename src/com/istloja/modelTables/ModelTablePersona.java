@@ -10,12 +10,12 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author IdeaPad - S340
  */
-public class ModelTablePersonaV2 extends AbstractTableModel{
-    private String[] m_colNames = {"Cedula", "Nombres", "Apellidos", "Direccion", "Telefono", "Correo"};
+public class ModelTablePersona extends AbstractTableModel{
+    private String[] m_colNames = {"Cedula", "Nombres", "Apellidos", "Direccion", "Telefono", "Correo", "Genero "};
     private List<Persona>personas;
     private GestionContable gContable;
 
-    public ModelTablePersonaV2(List<Persona> personas, GestionContable gContable) {
+    public ModelTablePersona(List<Persona> personas, GestionContable gContable) {
         this.personas = personas;
         this.gContable = gContable;
     }
@@ -45,7 +45,9 @@ public class ModelTablePersonaV2 extends AbstractTableModel{
             case 4:
                 return persona.getTelefono();
             case 5:
-                return persona.getCorreo();          
+                return persona.getCorreo(); 
+            case 6:
+                return persona.getGenero();
                
         
         }

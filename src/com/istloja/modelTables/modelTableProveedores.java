@@ -15,7 +15,8 @@ import javax.swing.table.AbstractTableModel;
  * @author IdeaPad - S340
  */
 public class modelTableProveedores extends AbstractTableModel{
-    private String[] m_colNames = {"RUC", "RAZON SOCIAL", "TIPO ACTIVIDAD", "NOMBRE REPRESENTANTE LEGAL", "APELLIDO REPRESENTANTE LEGAL", "TELEFONO", "CORREO"};
+    private String[] m_colNames = {"RUC", "RAZON SOCIAL", "TIPO ACTIVIDAD", "NOMBRE REPRESENTANTE LEGAL", "APELLIDO REPRESENTANTE LEGAL", 
+        "TELEFONO", "CORREO", "DIRECCION"};
     private List<Proveedores> proveedores;
     private GestionContable gContable;
 
@@ -54,7 +55,9 @@ public class modelTableProveedores extends AbstractTableModel{
             case 5:
                 return proveedor.getTelefono();
             case 6:
-                return proveedor.getCorreo();                     
+                return proveedor.getCorreo();          
+            case 7:
+                return proveedor.getDireccionpro();
                 
         }
         return new String();

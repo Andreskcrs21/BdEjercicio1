@@ -17,22 +17,21 @@ import java.sql.ResultSet;
 public class Inventariobd {
     public boolean registrarInventario(Inventario inventario){
     
-        boolean registrar = false;
-        
-        Statement stm = null;
-        
-        Connection con = null;
-        
-       
-                 
-        String sql = "INSERT INTO inventario (`codigo_pro`, `descripcion`, `precio_compra`, `precio_venta`, `can_productos`) VALUES ('"
+        boolean registrar = false;        
+        Statement stm = null;        
+        Connection con = null;        
+                        
+        String sql = "INSERT INTO inventario (`codigo_pro`, `can_productos`, `descripcion`, `precio_compra_sin_iva`, `precio_compra_con_iva`,`precio_mayorista`, `precio_cliente_fijo`, `precio_cliente_normal`, `fecha_caducidad`) VALUES ('"
                 +inventario.getCoproducto()+"', '"
+                +inventario.getCanproductos()+"', '"
                 +inventario.getDescripcion()+"', '"
-                +inventario.getPreciocompra()+"', '"
-                +inventario.getPrecioventa()+"', '"
-                +inventario.getCanproductos()+"');";
-                
-         
+                +inventario.getPreciocompra_sin_iva()+"', '"
+                +inventario.getPreciocompra_con_iva()+"','"
+                +inventario.getPreciomayorista()+"','"
+                +inventario.getPreciocliente_fijo()+"','"
+                +inventario.getPreciocliente_normal()+"','"
+                +inventario.getFecha_caducidad()+"');";
+                        
         try {
             BdEjercicio1  conexion = new BdEjercicio1();
             con = conexion.getConexion();
@@ -54,8 +53,9 @@ public class Inventariobd {
         
         Connection con = null; //coenxion con la base de datos
         
-        String sql = "update inventario set codigo_pro = '"+inventario.getCoproducto()+"', descripcion = '"+inventario.getDescripcion()+"', precio_compra='"+inventario.getPreciocompra()+"', precio_venta='"+inventario.getPrecioventa()+"', can_productos='"+inventario.getCanproductos()+"' where (id_inventario=" + inventario.getIdinventario()+ ")"; // concatenando la opcion de actualizacion
-        
+        String sql = "update inventario set codigo_pro = '"+inventario.getCoproducto()+"', can_productos = '"+inventario.getCanproductos()+"', descripcion = '"+inventario.getDescripcion()+"', precio_compra_sin_iva = '"+inventario.getPreciocompra_sin_iva()+"',"
+                + "precio_compra_con_iva = '"+inventario.getPreciocompra_con_iva()+"', precio_mayorista = '"+inventario.getPreciomayorista()+"', precio_cliente_fijo = '"+inventario.getPreciocliente_fijo()+"',"
+                + "precio_cliente_normal = '"+inventario.getPreciocliente_normal()+"', fecha_caducidad = '"+inventario.getFecha_caducidad()+"' where id_inventario = '"+inventario.getIdinventario()+"';";
         try {
             BdEjercicio1  conexion = new BdEjercicio1();
             con = conexion.getConexion();
@@ -109,10 +109,15 @@ public class Inventariobd {
                 Inventario i = new Inventario();
                 i.setIdinventario(rs.getInt(1));
                 i.setCoproducto(rs.getString(2));
-                i.setDescripcion(rs.getString(3));
-                i.setPreciocompra(rs.getString(4));
-                i.setPrecioventa(rs.getString(5));
-                i.setCanproductos(rs.getString(6));
+                i.setCanproductos(rs.getString(3));
+                i.setDescripcion(rs.getString(4));
+                i.setPreciocompra_sin_iva(rs.getString(5));
+                i.setPreciocompra_con_iva(rs.getString(6));
+                i.setPreciomayorista(rs.getString(7));
+                i.setPreciocliente_fijo(rs.getString(8));
+                i.setPreciocliente_normal(rs.getString(9));
+                i.setFecha_caducidad(rs.getString(10));
+                
                 listaProductos.add(i);
             }
             stm.close();
@@ -123,5 +128,174 @@ public class Inventariobd {
         }
 
         return listaProductos;
+    }
+    // Metodos para buscar en el combobox
+    
+    public List<Inventario> buscarCodigo(String coproducto){
+        Connection co = null; //Sirve para conectar con a base de datos
+        Statement stm = null; //Sirve para preparar los datos
+        ResultSet rs = null;//Sentencia de JDBC para obtener valores de la base de datos.
+        List<Inventario> listaProductos = new ArrayList<>();
+            String sql = "SELECT * FROM persona.inventario where codigo_pro like \"%"+coproducto+"%\"";
+        
+        try {
+            co = new BdEjercicio1().getConexion();
+            stm = (Statement) co.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                Inventario i = new Inventario();
+                i.setIdinventario(rs.getInt(1));
+                i.setCoproducto(rs.getString(2));
+                i.setCanproductos(rs.getString(3));
+                i.setDescripcion(rs.getString(4));
+                i.setPreciocompra_sin_iva(rs.getString(5));
+                i.setPreciocompra_con_iva(rs.getString(6));
+                i.setPreciomayorista(rs.getString(7));
+                i.setPreciocliente_fijo(rs.getString(8));
+                i.setPreciocliente_normal(rs.getString(9));
+                i.setFecha_caducidad(rs.getString(10));
+            }
+            stm.close();
+            rs.close();
+            co.close();
+        } catch (SQLException e) {
+            //System.out.println("Error:"+ e.getMessage());
+        }
+
+        return listaProductos;
+           
+    }
+    public List<Inventario> buscarDescripcion(String descripcion){
+        Connection co = null; //Sirve para conectar con a base de datos
+        Statement stm = null; //Sirve para preparar los datos
+        ResultSet rs = null;//Sentencia de JDBC para obtener valores de la base de datos.
+        List<Inventario> listaProductos = new ArrayList<>();
+            String sql = "SELECT * FROM persona.inventario where descripcion like \"%"+descripcion+"%\"";
+        
+        try {
+            co = new BdEjercicio1().getConexion();
+            stm = (Statement) co.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                Inventario i = new Inventario();
+                i.setIdinventario(rs.getInt(1));
+                i.setCoproducto(rs.getString(2));
+                i.setCanproductos(rs.getString(3));
+                i.setDescripcion(rs.getString(4));
+                i.setPreciocompra_sin_iva(rs.getString(5));
+                i.setPreciocompra_con_iva(rs.getString(6));
+                i.setPreciomayorista(rs.getString(7));
+                i.setPreciocliente_fijo(rs.getString(8));
+                i.setPreciocliente_normal(rs.getString(9));
+                i.setFecha_caducidad(rs.getString(10));
+            }
+            stm.close();
+            rs.close();
+            co.close();
+        } catch (SQLException e) {
+            //System.out.println("Error:"+ e.getMessage());
+        }
+
+        return listaProductos;
+           
+    }public List<Inventario> buscarPrecioCompra(String preciocompra){
+        Connection co = null; //Sirve para conectar con a base de datos
+        Statement stm = null; //Sirve para preparar los datos
+        ResultSet rs = null;//Sentencia de JDBC para obtener valores de la base de datos.
+        List<Inventario> listaProductos = new ArrayList<>();
+            String sql = "SELECT * FROM persona.inventario where precio_compra like \"%"+preciocompra+"%\"";
+        
+        try {
+            co = new BdEjercicio1().getConexion();
+            stm = (Statement) co.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()) {
+               Inventario i = new Inventario();
+                i.setIdinventario(rs.getInt(1));
+                i.setCoproducto(rs.getString(2));
+                i.setCanproductos(rs.getString(3));
+                i.setDescripcion(rs.getString(4));
+                i.setPreciocompra_sin_iva(rs.getString(5));
+                i.setPreciocompra_con_iva(rs.getString(6));
+                i.setPreciomayorista(rs.getString(7));
+                i.setPreciocliente_fijo(rs.getString(8));
+                i.setPreciocliente_normal(rs.getString(9));
+                i.setFecha_caducidad(rs.getString(10));
+            }
+            stm.close();
+            rs.close();
+            co.close();
+        } catch (SQLException e) {
+            //System.out.println("Error:"+ e.getMessage());
+        }
+
+        return listaProductos;
+           
+    }public List<Inventario> buscarPrecioVenta(String precioventa){
+        Connection co = null; //Sirve para conectar con a base de datos
+        Statement stm = null; //Sirve para preparar los datos
+        ResultSet rs = null;//Sentencia de JDBC para obtener valores de la base de datos.
+        List<Inventario> listaProductos = new ArrayList<>();
+            String sql = "SELECT * FROM persona.inventario where precio_venta like \"%"+precioventa+"%\"";
+        
+        try {
+            co = new BdEjercicio1().getConexion();
+            stm = (Statement) co.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                Inventario i = new Inventario();
+                i.setIdinventario(rs.getInt(1));
+                i.setCoproducto(rs.getString(2));
+                i.setCanproductos(rs.getString(3));
+                i.setDescripcion(rs.getString(4));
+                i.setPreciocompra_sin_iva(rs.getString(5));
+                i.setPreciocompra_con_iva(rs.getString(6));
+                i.setPreciomayorista(rs.getString(7));
+                i.setPreciocliente_fijo(rs.getString(8));
+                i.setPreciocliente_normal(rs.getString(9));
+                i.setFecha_caducidad(rs.getString(10));
+            }
+            stm.close();
+            rs.close();
+            co.close();
+        } catch (SQLException e) {
+            //System.out.println("Error:"+ e.getMessage());
+        }
+
+        return listaProductos;
+           
+    }public List<Inventario> buscarCantidad(String canproductos){
+        Connection co = null; //Sirve para conectar con a base de datos
+        Statement stm = null; //Sirve para preparar los datos
+        ResultSet rs = null;//Sentencia de JDBC para obtener valores de la base de datos.
+        List<Inventario> listaProductos = new ArrayList<>();
+            String sql = "SELECT * FROM persona.inventario where can_productos like \"%"+canproductos+"%\"";
+        
+        try {
+            co = new BdEjercicio1().getConexion();
+            stm = (Statement) co.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                Inventario i = new Inventario();
+                i.setIdinventario(rs.getInt(1));
+                i.setCoproducto(rs.getString(2));
+                i.setCanproductos(rs.getString(3));
+                i.setDescripcion(rs.getString(4));
+                i.setPreciocompra_sin_iva(rs.getString(5));
+                i.setPreciocompra_con_iva(rs.getString(6));
+                i.setPreciomayorista(rs.getString(7));
+                i.setPreciocliente_fijo(rs.getString(8));
+                i.setPreciocliente_normal(rs.getString(9));
+                i.setFecha_caducidad(rs.getString(10));
+            }
+            stm.close();
+            rs.close();
+            co.close();
+        } catch (SQLException e) {
+            //System.out.println("Error:"+ e.getMessage());
+        }
+
+        return listaProductos;
+           
     }
 }

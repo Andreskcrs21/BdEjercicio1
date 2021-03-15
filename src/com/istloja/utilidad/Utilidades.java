@@ -88,4 +88,14 @@ public class Utilidades {
         }
       
     }
+    public boolean validarCodigoNumeros(String numero){
+        try{
+            int validadnumero = Integer.parseInt(numero);
+            return true;
+        
+        }catch (Exception e){
+            return false;
+        }
+    
+    }
 }

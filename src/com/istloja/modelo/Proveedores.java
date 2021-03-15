@@ -5,6 +5,8 @@
  */
 package com.istloja.modelo;
 
+import java.util.Date;
+
 /**
  *
  * @author IdeaPad - S340
@@ -18,11 +20,13 @@ public class Proveedores {
     private String apellidoRepresentante;
     private String telefono;
     private String correo;
+    private String direccionpro;
+    private Date fecha_registro;
     
     public Proveedores(){
     }
 
-    public Proveedores(int idProveedor, String ruc, String RazonSocial, String tipoActividad, String nombreRepresentante, String apellidoRepresentante, String telefono, String correo) {
+    public Proveedores(int idProveedor, String ruc, String RazonSocial, String tipoActividad, String nombreRepresentante, String apellidoRepresentante, String telefono, String correo, String direccionpro, Date fecha_registro) {
         this.idProveedor = idProveedor;
         this.ruc = ruc;
         this.RazonSocial = RazonSocial;
@@ -31,7 +35,11 @@ public class Proveedores {
         this.apellidoRepresentante = apellidoRepresentante;
         this.telefono = telefono;
         this.correo = correo;
+        this.direccionpro = direccionpro;
+        this.fecha_registro = fecha_registro;
     }
+
+   
 
     public int getIdProveedor() {
         return idProveedor;
@@ -97,10 +105,30 @@ public class Proveedores {
         this.correo = correo;
     }
 
+    public String getDireccionpro() {
+        return direccionpro;
+    }
+
+    public void setDireccionpro(String direccionpro) {
+        this.direccionpro = direccionpro;
+    }   
+
+    public Date getFecha_registro() {
+        return fecha_registro;
+    }
+
+    public void setFecha_registro(Date fecha_registro) {
+        this.fecha_registro = fecha_registro;
+    }
+
     @Override
     public String toString() {
-        return "Proveedores{" + "idProveedores=" + idProveedor+ ", ruc=" + ruc + ", razonSocial=" + RazonSocial + ", tipoActividad=" + tipoActividad + ", nombreRepresentanteLegal=" + nombreRepresentante + ", ApellidosRepresentanteLegal=" + apellidoRepresentante + ", telefono=" + telefono + ", correo=" + correo + '}'; 
+        return "Proveedores{" + "idProveedor=" + idProveedor + ", ruc=" + ruc + ", RazonSocial=" + RazonSocial + ", tipoActividad=" + tipoActividad + ", nombreRepresentante=" + nombreRepresentante + ", apellidoRepresentante=" + apellidoRepresentante + ", telefono=" + telefono + ", correo=" + correo + ", direccionpro=" + direccionpro + ", fecha_registro=" + fecha_registro + '}';
     }
+
+    
+
+   
     
     
 }

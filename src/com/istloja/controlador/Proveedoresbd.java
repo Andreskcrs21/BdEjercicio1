@@ -6,7 +6,6 @@
 package com.istloja.controlador;
 
 import com.istloja.conexionbd.BdEjercicio1;
-import com.istloja.modelo.Persona;
 import com.istloja.modelo.Proveedores;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
@@ -22,22 +21,19 @@ import java.util.List;
 public class Proveedoresbd {
      public boolean registrarProveedor(Proveedores proveedor){
     
-        boolean registrar = false;
-        
-        Statement stm = null;
-        
+        boolean registrar = false;        
+        Statement stm = null;        
         Connection con = null;
         
-       
-                 
-        String sql = "INSERT INTO proveedores (`ruc`, `razonSocial`, `tipoActividad`, `nombreRepresentanteLegal`, `apellidoRepresentanteLegal`, `telefono`, `correo`) VALUES ('"
+        String sql = "INSERT INTO proveedores (`ruc`, `razonSocial`, `tipoActividad`, `nombreRepresentanteLegal`, `apellidoRepresentanteLegal`, `telefono`, `correo`, `direccion`) VALUES ('"
                 +proveedor.getRuc()+"', '"
                 +proveedor.getRazonSocial()+"', '"
                 +proveedor.getTipoActividad()+"', '"
                 +proveedor.getNombreRepresentante() +"', '"
                 +proveedor.getApellidoRepresentante()+"', '"
                 +proveedor.getTelefono()+"', '"
-                +proveedor.getCorreo()+"');";
+                +proveedor.getCorreo()+"','"
+                +proveedor.getDireccionpro()+ "');";
          
         try {
             BdEjercicio1  conexion = new BdEjercicio1();
@@ -54,38 +50,7 @@ public class Proveedoresbd {
     
         
     }
-    public Persona buscarpersona(String cedula){
-        Connection co = null; //Sirve para conectar con a base de datos
-        Statement stm = null; //Sirve para preparar los datos
-        ResultSet rs = null;//Sentencia de JDBC para obtener valores de la base de datos.
-        Persona c = null;
-        String sql = "SELECT * FROM persona.persona where cedula like "+cedula+";";
-        
-        try {
-            co = new BdEjercicio1().getConexion();
-            stm = (Statement) co.createStatement();
-            rs = stm.executeQuery(sql);
-            while (rs.next()) {
-                c = new Persona();
-                c.setIdPersona(rs.getInt(1));
-                c.setCedula(rs.getString(2));
-                c.setNombres(rs.getString(3));
-                c.setApellidos(rs.getString(4));
-                c.setDireccion(rs.getString(5));
-                c.setCorreo(rs.getString(6));
-                c.setTelefono(rs.getString(7));
-                
-            }
-            stm.close();
-            rs.close();
-            co.close();
-        } catch (SQLException e) {
-            //System.out.println("Error:"+ e.getMessage());
-        }
-
-        return c;
-           
-    }
+    
     public List<Proveedores> obtenerProveedores() {
         Connection co = null;
         Statement stm = null;
@@ -107,6 +72,7 @@ public class Proveedoresbd {
                 p.setApellidoRepresentante(rs.getString(6));
                 p.setTelefono(rs.getString(7));
                 p.setCorreo(rs.getString(8));
+                p.setDireccionpro(rs.getString(9));
                 listaProveedores.add(p);
             }
             stm.close();
@@ -117,6 +83,292 @@ public class Proveedoresbd {
         }
 
         return listaProveedores;
+    }
+    public boolean editarProveedor(Proveedores proveedores){
+        boolean editar = false; // variable que retorna luego de realziar la accion
+    
+        Statement stm = null;  // interfaz de acceso a la base de datos
+        
+        Connection con = null; //coenxion con la base de datos
+        
+        String sql = "update proveedores set ruc = '"+proveedores.getRuc()+"', razonSocial = '"+proveedores.getRazonSocial()+"', tipoActividad='"+proveedores.getTipoActividad()+"', nombreRepresentanteLegal='"+proveedores.getNombreRepresentante()+"', apellidoRepresentanteLegal='"+proveedores.getApellidoRepresentante()+"', telefono= '"+proveedores.getTelefono()+"', correo='"+proveedores.getCorreo()+"', direccion ='"+proveedores.getDireccionpro()+"' where (idproveedores=" + proveedores.getIdProveedor()+ ")"; // concatenando la opcion de actualizacion
+        
+        try {
+            BdEjercicio1  conexion = new BdEjercicio1();
+            con = conexion.getConexion();
+            stm = (Statement) con.createStatement();
+            stm.execute(sql);
+            editar = true;
+            stm.close();
+            con.close();
+        } catch (SQLException e) {
+            System.out.println("Error: "+ e);
+        }
+    
+    return editar;
+    }
+     public boolean eliminarProveedores(Proveedores proveedores){
+        boolean eliminar = false;
+    
+        Statement stm = null;
+        
+        Connection con = null;
+        
+         String sql = "delete from proveedores where idproveedores = '"+proveedores.getIdProveedor()+"'";
+        try {
+            BdEjercicio1  conexion = new BdEjercicio1();
+            con = conexion.getConexion();
+            stm = (Statement) con.createStatement();
+            stm.execute(sql);
+            eliminar = true;
+            stm.close();
+            con.close();
+        } catch (SQLException e) {
+            System.out.println("Error: "+ e);
+        }
+        
+        
+    
+    return eliminar;
+    }
+    // Metodos para buscar en el combobox
+    
+    public List<Proveedores> buscarRuc(String ruc){
+        Connection co = null; //Sirve para conectar con a base de datos
+        Statement stm = null; //Sirve para preparar los datos
+        ResultSet rs = null;//Sentencia de JDBC para obtener valores de la base de datos.
+        List<Proveedores> listaProveedores = new ArrayList<>();
+        String sql = "SELECT * FROM persona.proveedores where ruc like \"%"+ruc+"%\"";
+        
+        try {
+            co = new BdEjercicio1().getConexion();
+            stm = (Statement) co.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                Proveedores p = new Proveedores();
+                p.setIdProveedor(rs.getInt(1));
+                p.setRuc(rs.getString(2));
+                p.setRazonSocial(rs.getString(3));
+                p.setTipoActividad(rs.getString(4));
+                p.setNombreRepresentante(rs.getString(5));
+                p.setApellidoRepresentante(rs.getString(6));
+                p.setTelefono(rs.getString(7));
+                p.setCorreo(rs.getString(8));
+                p.setDireccionpro(rs.getString(9));
+                listaProveedores.add(p);
+            }
+            stm.close();
+            rs.close();
+            co.close();
+        } catch (SQLException e) {
+            //System.out.println("Error:"+ e.getMessage());
+        }
+
+        return listaProveedores;
+           
+    }
+    public List<Proveedores> buscarRazon(String RazonSocial){
+        Connection co = null; //Sirve para conectar con a base de datos
+        Statement stm = null; //Sirve para preparar los datos
+        ResultSet rs = null;//Sentencia de JDBC para obtener valores de la base de datos.
+        List<Proveedores> listaProveedores = new ArrayList<>();
+        String sql = "SELECT * FROM persona.proveedores where razonSocial like \"%"+RazonSocial+"%\"";
+        
+        try {
+            co = new BdEjercicio1().getConexion();
+            stm = (Statement) co.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                Proveedores p = new Proveedores();
+                p.setIdProveedor(rs.getInt(1));
+                p.setRuc(rs.getString(2));
+                p.setRazonSocial(rs.getString(3));
+                p.setTipoActividad(rs.getString(4));
+                p.setNombreRepresentante(rs.getString(5));
+                p.setApellidoRepresentante(rs.getString(6));
+                p.setTelefono(rs.getString(7));
+                p.setCorreo(rs.getString(8));
+                p.setDireccionpro(rs.getString(9));
+                listaProveedores.add(p);
+            }
+            stm.close();
+            rs.close();
+            co.close();
+        } catch (SQLException e) {
+            //System.out.println("Error:"+ e.getMessage());
+        }
+
+        return listaProveedores;
+           
+    }
+    public List<Proveedores> buscarActividad(String tipoActividad){
+        Connection co = null; //Sirve para conectar con a base de datos
+        Statement stm = null; //Sirve para preparar los datos
+        ResultSet rs = null;//Sentencia de JDBC para obtener valores de la base de datos.
+        List<Proveedores> listaProveedores = new ArrayList<>();
+        String sql = "SELECT * FROM persona.proveedores where tipoActividad like \"%"+tipoActividad+"%\"";
+        
+        try {
+            co = new BdEjercicio1().getConexion();
+            stm = (Statement) co.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                Proveedores p = new Proveedores();
+                p.setIdProveedor(rs.getInt(1));
+                p.setRuc(rs.getString(2));
+                p.setRazonSocial(rs.getString(3));
+                p.setTipoActividad(rs.getString(4));
+                p.setNombreRepresentante(rs.getString(5));
+                p.setApellidoRepresentante(rs.getString(6));
+                p.setTelefono(rs.getString(7));
+                p.setCorreo(rs.getString(8));
+                p.setDireccionpro(rs.getString(9));
+                listaProveedores.add(p);
+            }
+            stm.close();
+            rs.close();
+            co.close();
+        } catch (SQLException e) {
+            //System.out.println("Error:"+ e.getMessage());
+        }
+
+        return listaProveedores;
+           
+    }
+    public List<Proveedores> buscarNombreRepresentante(String nombreRepresentante){
+        Connection co = null; //Sirve para conectar con a base de datos
+        Statement stm = null; //Sirve para preparar los datos
+        ResultSet rs = null;//Sentencia de JDBC para obtener valores de la base de datos.
+        List<Proveedores> listaProveedores = new ArrayList<>();
+        String sql = "SELECT * FROM persona.proveedores where nombreRepresentanteLegal like \"%"+nombreRepresentante+"%\"";
+        
+        try {
+            co = new BdEjercicio1().getConexion();
+            stm = (Statement) co.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                Proveedores p = new Proveedores();
+                p.setIdProveedor(rs.getInt(1));
+                p.setRuc(rs.getString(2));
+                p.setRazonSocial(rs.getString(3));
+                p.setTipoActividad(rs.getString(4));
+                p.setNombreRepresentante(rs.getString(5));
+                p.setApellidoRepresentante(rs.getString(6));
+                p.setTelefono(rs.getString(7));
+                p.setCorreo(rs.getString(8));
+                p.setDireccionpro(rs.getString(9));
+                listaProveedores.add(p);
+            }
+            stm.close();
+            rs.close();
+            co.close();
+        } catch (SQLException e) {
+            //System.out.println("Error:"+ e.getMessage());
+        }
+
+        return listaProveedores;
+           
+    }
+    public List<Proveedores> buscarApellidoRepresentante(String apellidoRepresentante){
+        Connection co = null; //Sirve para conectar con a base de datos
+        Statement stm = null; //Sirve para preparar los datos
+        ResultSet rs = null;//Sentencia de JDBC para obtener valores de la base de datos.
+        List<Proveedores> listaProveedores = new ArrayList<>();
+        String sql = "SELECT * FROM persona.proveedores where apellidoRepresentanteLegal like \"%"+apellidoRepresentante+"%\"";
+        
+        try {
+            co = new BdEjercicio1().getConexion();
+            stm = (Statement) co.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                Proveedores p = new Proveedores();
+                p.setIdProveedor(rs.getInt(1));
+                p.setRuc(rs.getString(2));
+                p.setRazonSocial(rs.getString(3));
+                p.setTipoActividad(rs.getString(4));
+                p.setNombreRepresentante(rs.getString(5));
+                p.setApellidoRepresentante(rs.getString(6));
+                p.setTelefono(rs.getString(7));
+                p.setCorreo(rs.getString(8));
+                p.setDireccionpro(rs.getString(9));
+                listaProveedores.add(p);
+            }
+            stm.close();
+            rs.close();
+            co.close();
+        } catch (SQLException e) {
+            //System.out.println("Error:"+ e.getMessage());
+        }
+
+        return listaProveedores;
+           
+    }
+    public List<Proveedores> buscarTelefono(String telefono){
+        Connection co = null; //Sirve para conectar con a base de datos
+        Statement stm = null; //Sirve para preparar los datos
+        ResultSet rs = null;//Sentencia de JDBC para obtener valores de la base de datos.
+        List<Proveedores> listaProveedores = new ArrayList<>();
+        String sql = "SELECT * FROM persona.proveedores where telefono like \"%"+telefono+"%\"";
+        
+        try {
+            co = new BdEjercicio1().getConexion();
+            stm = (Statement) co.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                Proveedores p = new Proveedores();
+                p.setIdProveedor(rs.getInt(1));
+                p.setRuc(rs.getString(2));
+                p.setRazonSocial(rs.getString(3));
+                p.setTipoActividad(rs.getString(4));
+                p.setNombreRepresentante(rs.getString(5));
+                p.setApellidoRepresentante(rs.getString(6));
+                p.setTelefono(rs.getString(7));
+                p.setCorreo(rs.getString(8));
+                p.setDireccionpro(rs.getString(9));
+                listaProveedores.add(p);
+            }
+            stm.close();
+            rs.close();
+            co.close();
+        } catch (SQLException e) {
+            //System.out.println("Error:"+ e.getMessage());
+        }
+
+        return listaProveedores;
+           
+    }public List<Proveedores> buscarCorreo(String correo){
+        Connection co = null; //Sirve para conectar con a base de datos
+        Statement stm = null; //Sirve para preparar los datos
+        ResultSet rs = null;//Sentencia de JDBC para obtener valores de la base de datos.
+        List<Proveedores> listaProveedores = new ArrayList<>();
+        String sql = "SELECT * FROM persona.proveedores where correo like \"%"+correo+"%\"";
+        
+        try {
+            co = new BdEjercicio1().getConexion();
+            stm = (Statement) co.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                Proveedores p = new Proveedores();
+                p.setIdProveedor(rs.getInt(1));
+                p.setRuc(rs.getString(2));
+                p.setRazonSocial(rs.getString(3));
+                p.setTipoActividad(rs.getString(4));
+                p.setNombreRepresentante(rs.getString(5));
+                p.setApellidoRepresentante(rs.getString(6));
+                p.setTelefono(rs.getString(7));
+                p.setCorreo(rs.getString(8));
+                p.setDireccionpro(rs.getString(9));
+                listaProveedores.add(p);
+            }
+            stm.close();
+            rs.close();
+            co.close();
+        } catch (SQLException e) {
+            //System.out.println("Error:"+ e.getMessage());
+        }
+
+        return listaProveedores;
+           
     }
     
     

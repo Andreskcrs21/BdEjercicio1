@@ -1,6 +1,8 @@
 
 package com.istloja.modelo;
 
+import java.util.Date;
+
 /**
  *
  * @author IdeaPad - S340
@@ -13,8 +15,10 @@ public class Persona {
     private String direccion;
     private String correo;
     private String telefono;
+    private Date fecha_registro;
+    private String genero;
 
-    /*public Persona(int idPersona, String cedula, String nombres, String apellidos, String direccion, String correo, String telefono) {
+    public Persona(int idPersona, String cedula, String nombres, String apellidos, String direccion, String correo, String telefono, Date fecha_registro, String genero) {
         this.idPersona = idPersona;
         this.cedula = cedula;
         this.nombres = nombres;
@@ -22,11 +26,13 @@ public class Persona {
         this.direccion = direccion;
         this.correo = correo;
         this.telefono = telefono;
+        this.fecha_registro = fecha_registro;
+        this.genero = genero;
+        
     
-    }*/
-    @Override
-    public String toString() {
-        return "Persona{" + "cedula=" + cedula + ", nombres=" + nombres + ", apellidos=" + apellidos + ", direccion=" + direccion + ", correo=" + correo + ", telefono=" + telefono + '}';
+    }
+    public Persona(){
+    
     }
 
     public int getIdPersona() {
@@ -84,4 +90,27 @@ public class Persona {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+
+    public Date getFecha_registro() {
+        return fecha_registro;
+    }
+
+    public void setFecha_registro(Date fecha_registro) {
+        this.fecha_registro = fecha_registro;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    @Override
+    public String toString() {
+        return "Persona{" + "idPersona=" + idPersona + ", cedula=" + cedula + ", nombres=" + nombres + ", apellidos=" + apellidos + ", direccion=" + direccion + ", correo=" + correo + ", telefono=" + telefono + ", fecha_registro=" + fecha_registro + ", genero=" + genero + '}';
+    }
+    
+    
 }
