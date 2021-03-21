@@ -7,6 +7,7 @@ package com.istloja.controlador;
 
 import com.istloja.conexionbd.BdEjercicio1;
 import com.istloja.modelo.Proveedores;
+import com.istloja.utilidad.Utilidades;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 import java.sql.ResultSet;
@@ -19,13 +20,18 @@ import java.util.List;
  * @author IdeaPad - S340
  */
 public class Proveedoresbd {
+    public Utilidades utilidades;
+
+    public Proveedoresbd() {
+        utilidades = new Utilidades();
+    }
      public boolean registrarProveedor(Proveedores proveedor){
     
         boolean registrar = false;        
         Statement stm = null;        
         Connection con = null;
         
-        String sql = "INSERT INTO proveedores (`ruc`, `razonSocial`, `tipoActividad`, `nombreRepresentanteLegal`, `apellidoRepresentanteLegal`, `telefono`, `correo`, `direccion`) VALUES ('"
+        String sql = "INSERT INTO proveedores (`ruc`, `razonSocial`, `tipoActividad`, `nombreRepresentanteLegal`, `apellidoRepresentanteLegal`, `telefono`, `correo`, `direccion`, `fecha_vencimiento`, `fecha_registro`) VALUES ('"
                 +proveedor.getRuc()+"', '"
                 +proveedor.getRazonSocial()+"', '"
                 +proveedor.getTipoActividad()+"', '"
@@ -33,7 +39,9 @@ public class Proveedoresbd {
                 +proveedor.getApellidoRepresentante()+"', '"
                 +proveedor.getTelefono()+"', '"
                 +proveedor.getCorreo()+"','"
-                +proveedor.getDireccionpro()+ "');";
+                +proveedor.getDireccionpro()+ "','"
+                +utilidades.formatoFecha(proveedor.getFecha_vencimientop())+"','"
+                +utilidades.formatoFecha(proveedor.getFecha_registro())+"');";
          
         try {
             BdEjercicio1  conexion = new BdEjercicio1();
@@ -73,6 +81,7 @@ public class Proveedoresbd {
                 p.setTelefono(rs.getString(7));
                 p.setCorreo(rs.getString(8));
                 p.setDireccionpro(rs.getString(9));
+                p.setFecha_vencimientop(rs.getDate(10));
                 listaProveedores.add(p);
             }
             stm.close();
@@ -91,7 +100,15 @@ public class Proveedoresbd {
         
         Connection con = null; //coenxion con la base de datos
         
-        String sql = "update proveedores set ruc = '"+proveedores.getRuc()+"', razonSocial = '"+proveedores.getRazonSocial()+"', tipoActividad='"+proveedores.getTipoActividad()+"', nombreRepresentanteLegal='"+proveedores.getNombreRepresentante()+"', apellidoRepresentanteLegal='"+proveedores.getApellidoRepresentante()+"', telefono= '"+proveedores.getTelefono()+"', correo='"+proveedores.getCorreo()+"', direccion ='"+proveedores.getDireccionpro()+"' where (idproveedores=" + proveedores.getIdProveedor()+ ")"; // concatenando la opcion de actualizacion
+        String sql = "update proveedores set ruc = '"+proveedores.getRuc()+"', "
+                + "razonSocial = '"+proveedores.getRazonSocial()+"', "
+                + "tipoActividad='"+proveedores.getTipoActividad()+"', "
+                + "nombreRepresentanteLegal='"+proveedores.getNombreRepresentante()+"', "
+                + "apellidoRepresentanteLegal='"+proveedores.getApellidoRepresentante()+"', "
+                + "telefono= '"+proveedores.getTelefono()+"', correo='"+proveedores.getCorreo()+"', "
+                + "direccion ='"+proveedores.getDireccionpro()+"', "
+                + "fecha_vencimiento = '"+utilidades.formatoFecha(proveedores.getFecha_vencimientop())+"', "
+                + "fecha_actualizacion = '"+utilidades.formatoFecha(proveedores.getFecha_actualizacion())+"' where (idproveedores=" + proveedores.getIdProveedor()+ ")"; // concatenando la opcion de actualizacion
         
         try {
             BdEjercicio1  conexion = new BdEjercicio1();

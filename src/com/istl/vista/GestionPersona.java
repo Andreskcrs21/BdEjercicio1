@@ -3,6 +3,8 @@ package com.istl.vista;
 
 import com.istloja.modelo.Persona;
 import com.istloja.utilidad.Utilidades;
+import com.toedter.calendar.JDateChooser;
+import java.util.Date;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -20,10 +22,11 @@ public class GestionPersona {
     private JTextField txttelefono;
     private JTextField txtcorreo;
     private JComboBox combogenero;
+    private JDateChooser jDateFechaNacimiento;
     private Utilidades utilidades;
     private JFrame frameGestionContable;
 
-    public GestionPersona(JTextField txtcedula, JTextField txtnombre, JTextField txtapellidos, JTextField txtdireccion, JTextField txttelefono, JTextField txtcorreo, JComboBox combogenero, Utilidades utilidades, JFrame frameGestionContable) {
+    public GestionPersona(JTextField txtcedula, JTextField txtnombre, JTextField txtapellidos, JTextField txtdireccion, JTextField txttelefono, JTextField txtcorreo, JComboBox combogenero, JDateChooser jDateFechaNacimiento, Utilidades utilidades, JFrame frameGestionContable) {
         this.txtcedula = txtcedula;
         this.txtnombre = txtnombre;
         this.txtapellidos = txtapellidos;
@@ -31,6 +34,7 @@ public class GestionPersona {
         this.txttelefono = txttelefono;
         this.txtcorreo = txtcorreo;
         this.combogenero = combogenero;
+        this.jDateFechaNacimiento = jDateFechaNacimiento;
         this.utilidades = utilidades;
         this.frameGestionContable = frameGestionContable;
     }
@@ -89,6 +93,15 @@ public class GestionPersona {
     public void setGenero(JComboBox genero) {
         this.combogenero = genero;
     }
+
+    public JDateChooser getjDateFechaNacimiento() {
+        return jDateFechaNacimiento;
+    }
+
+    public void setjDateFechaNacimiento(JDateChooser jDateFechaNacimiento) {
+        this.jDateFechaNacimiento = jDateFechaNacimiento;
+    }
+    
     
     void limpiarCamposPersona(){
         txtcedula.setText("");
@@ -97,12 +110,13 @@ public class GestionPersona {
         txtdireccion.setText("");
         txttelefono.setText("");
         txtcorreo.setText("");
-        combogenero.setSelectedItem(0);
+        combogenero.setSelectedIndex(0);
+        jDateFechaNacimiento.setDate(null);
         
         
     
     }
-    public Persona guardarEditar(){
+    public Persona guardarEditar(boolean isEditar){
         if (txtnombre.getText().isEmpty()) {
             JOptionPane.showMessageDialog(frameGestionContable, "El campo Nombres no tiene datos","ERROR",JOptionPane.ERROR_MESSAGE);
             txtnombre.requestFocus();
@@ -142,6 +156,12 @@ public class GestionPersona {
         persona.setTelefono(txttelefono.getText());
         persona.setCorreo(txtcorreo.getText());
         persona.setGenero(combogenero.getSelectedItem().toString());
+        if (isEditar) {
+            persona.setFecha_actializacion(new Date());
+        }else{
+            persona.setFecha_registro(new Date());
+        }
+        persona.setFecha_nacimiento(jDateFechaNacimiento.getDate());
         //System.out.println(persona.toString());
         return persona;
     

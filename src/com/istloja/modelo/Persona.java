@@ -16,9 +16,11 @@ public class Persona {
     private String correo;
     private String telefono;
     private Date fecha_registro;
+    private Date fecha_actializacion;
+    private Date fecha_nacimiento;
     private String genero;
 
-    public Persona(int idPersona, String cedula, String nombres, String apellidos, String direccion, String correo, String telefono, Date fecha_registro, String genero) {
+    public Persona(int idPersona, String cedula, String nombres, String apellidos, String direccion, String correo, String telefono, Date fecha_registro, Date fecha_actializacion, Date fecha_nacimiento, String genero) {
         this.idPersona = idPersona;
         this.cedula = cedula;
         this.nombres = nombres;
@@ -27,10 +29,14 @@ public class Persona {
         this.correo = correo;
         this.telefono = telefono;
         this.fecha_registro = fecha_registro;
+        this.fecha_actializacion = fecha_actializacion;
+        this.fecha_nacimiento = fecha_nacimiento;
         this.genero = genero;
-        
-    
     }
+
+   
+
+    
     public Persona(){
     
     }
@@ -99,6 +105,24 @@ public class Persona {
         this.fecha_registro = fecha_registro;
     }
 
+    public Date getFecha_actializacion() {
+        return fecha_actializacion;
+    }
+
+    public void setFecha_actializacion(Date fecha_actializacion) {
+        this.fecha_actializacion = fecha_actializacion;
+    }
+
+    public Date getFecha_nacimiento() {
+        return fecha_nacimiento;
+    }
+
+    public void setFecha_nacimiento(Date fecha_nacimiento) {
+        this.fecha_nacimiento = fecha_nacimiento;
+    }
+    
+    
+
     public String getGenero() {
         return genero;
     }
@@ -109,8 +133,12 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "Persona{" + "idPersona=" + idPersona + ", cedula=" + cedula + ", nombres=" + nombres + ", apellidos=" + apellidos + ", direccion=" + direccion + ", correo=" + correo + ", telefono=" + telefono + ", fecha_registro=" + fecha_registro + ", genero=" + genero + '}';
+        return "Persona{" + "idPersona=" + idPersona + ", cedula=" + cedula + ", nombres=" + nombres + ", apellidos=" + apellidos + ", direccion=" + direccion + ", correo=" + correo + ", telefono=" + telefono + ", fecha_registro=" + fecha_registro + ", fecha_actializacion=" + fecha_actializacion + ", fecha_nacimiento=" + fecha_nacimiento + ", genero=" + genero + '}';
     }
+
+   
+
+    
     
     
 }

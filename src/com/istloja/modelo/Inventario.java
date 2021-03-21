@@ -17,14 +17,14 @@ public class Inventario {
     private String preciomayorista;
     private String preciocliente_fijo;
     private String preciocliente_normal;
-    private String fecha_caducidad;
+    private Date fecha_caducidad;
     private Date fecha_registro;
     private Date fecha_actualizacion;
         
     public Inventario(){
     
     }
-    public Inventario(int idinventario, String coproducto, String canproductos, String descripcion, String preciocompra_sin_iva, String preciocompra_con_iva, String preciomayorista, String preciocliente_fijo, String preciocliente_normal, String fecha_caducidad, Date fecha_registro, Date fecha_actualizacion) {
+    public Inventario(int idinventario, String coproducto, String canproductos, String descripcion, String preciocompra_sin_iva, String preciocompra_con_iva, String preciomayorista, String preciocliente_fijo, String preciocliente_normal, Date fecha_caducidad, Date fecha_registro, Date fecha_actualizacion) {
         this.idinventario = idinventario;
         this.coproducto = coproducto;
         this.canproductos = canproductos;
@@ -111,13 +111,15 @@ public class Inventario {
         this.preciocliente_normal = preciocliente_normal;
     }
 
-    public String getFecha_caducidad() {
+    public Date getFecha_caducidad() {
         return fecha_caducidad;
     }
 
-    public void setFecha_caducidad(String fecha_caducidad) {
+    public void setFecha_caducidad(Date fecha_caducidad) {
         this.fecha_caducidad = fecha_caducidad;
     }
+
+   
 
     public Date getFecha_registro() {
         return fecha_registro;
@@ -135,12 +137,16 @@ public class Inventario {
         this.fecha_actualizacion = fecha_actualizacion;
     }
 
-    
-
     @Override
     public String toString() {
-        return "Inventario{" + "idinventario=" + idinventario + ", coproducto=" + coproducto + ", descripcion=" + descripcion + ", canproductos=" + canproductos + ", preciocompra_sin_iva=" + preciocompra_sin_iva + ", preciocompra_con_iva=" + preciocompra_con_iva + ", preciomayorista=" + preciomayorista + ", preciocliente_fijo=" + preciocliente_fijo + ", preciocliente_normal=" + preciocliente_normal + ", fecha_caducidad=" + fecha_caducidad + ", fecha_registro=" + fecha_registro + ", fecha_actualizacion=" + fecha_actualizacion + '}';
+        return "Inventario{" + "idinventario=" + idinventario + ", coproducto=" + coproducto + ", canproductos=" + canproductos + ", descripcion=" + descripcion + ", preciocompra_sin_iva=" + preciocompra_sin_iva + ", preciocompra_con_iva=" + preciocompra_con_iva + ", preciomayorista=" + preciomayorista + ", preciocliente_fijo=" + preciocliente_fijo + ", preciocliente_normal=" + preciocliente_normal + ", fecha_caducidad=" + fecha_caducidad + ", fecha_registro=" + fecha_registro + ", fecha_actualizacion=" + fecha_actualizacion + '}';
     }
+
+    
+
+    
+
+   
     
 
  

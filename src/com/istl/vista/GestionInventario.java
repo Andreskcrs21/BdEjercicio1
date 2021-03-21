@@ -7,6 +7,7 @@ package com.istl.vista;
 
 import com.istloja.modelo.Inventario;
 import com.istloja.utilidad.Utilidades;
+import com.toedter.calendar.JDateChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -25,11 +26,11 @@ public class GestionInventario {
     private JTextField txtpreciomayorista;
     private JTextField txtprecio_clientefijo;
     private JTextField txtprecio_clientenormal;
-    private JTextField txtfecha_caducidad;    
+    private JDateChooser jDateVencimiento;    
     private JFrame frameGestionContable;
     private Utilidades utilidades;
 
-    public GestionInventario(JTextField txtcopro, JTextField txtcanpro, JTextField txtdespro, JTextField txtprecompra_siniva, JTextField txtprecompra_coniva, JTextField txtpreciomayorista, JTextField txtprecio_clientefijo, JTextField txtprecio_clientenormal, JTextField txtfecha_caducidad, JFrame frameGestionContable, Utilidades utilidades) {
+    public GestionInventario(JTextField txtcopro, JTextField txtcanpro, JTextField txtdespro, JTextField txtprecompra_siniva, JTextField txtprecompra_coniva, JTextField txtpreciomayorista, JTextField txtprecio_clientefijo, JTextField txtprecio_clientenormal, JDateChooser jDateVencimiento, JFrame frameGestionContable, Utilidades utilidades) {
         this.txtcopro = txtcopro;
         this.txtcanpro = txtcanpro;
         this.txtdespro = txtdespro;
@@ -38,7 +39,7 @@ public class GestionInventario {
         this.txtpreciomayorista = txtpreciomayorista;
         this.txtprecio_clientefijo = txtprecio_clientefijo;
         this.txtprecio_clientenormal = txtprecio_clientenormal;
-        this.txtfecha_caducidad = txtfecha_caducidad;
+        this.jDateVencimiento = jDateVencimiento;
         this.frameGestionContable = frameGestionContable;
         this.utilidades = utilidades;
     }
@@ -107,13 +108,15 @@ public class GestionInventario {
         this.txtprecio_clientenormal = txtprecio_clientenormal;
     }
 
-    public JTextField getTxtfecha_caducidad() {
-        return txtfecha_caducidad;
+    public JDateChooser getjDateVencimiento() {
+        return jDateVencimiento;
     }
 
-    public void setTxtfecha_caducidad(JTextField txtfecha_caducidad) {
-        this.txtfecha_caducidad = txtfecha_caducidad;
+    public void setjDateVencimiento(JDateChooser jDateVencimiento) {
+        this.jDateVencimiento = jDateVencimiento;
     }
+    
+    
     void limpiarcamposProducto(){
         txtcopro.setText("");
         txtdespro.setText("");
@@ -123,11 +126,11 @@ public class GestionInventario {
         txtpreciomayorista.setText("");
         txtprecio_clientefijo.setText("");
         txtprecio_clientenormal.setText("");
-        txtfecha_caducidad.setText("");
+        jDateVencimiento.setDate(null);
               
     
     }
-    public Inventario guardarEditar(){
+    public Inventario guardarEditar(boolean isEditar){
         if (txtcopro.getText().isEmpty()) {
             JOptionPane.showMessageDialog(frameGestionContable, "El campo Codigo no tiene datos","ERROR",JOptionPane.ERROR_MESSAGE);
             txtcopro.requestFocus(); // sirve para ubicar el cursor en el cuadro de texto
@@ -160,11 +163,12 @@ public class GestionInventario {
             JOptionPane.showMessageDialog(frameGestionContable, "El campo Precio Cliente Normal no tiene datos","ERROR",JOptionPane.ERROR_MESSAGE);
             txtprecio_clientenormal.requestFocus(); // sirve para ubicar el cursor en el cuadro de texto
             return null;
-        }if (txtfecha_caducidad.getText().isEmpty()) {
+        }/*if (txtfecha_caducidad.getText().isEmpty()) {
             JOptionPane.showMessageDialog(frameGestionContable, "El campo Fecha de caducidad no tiene datos","ERROR",JOptionPane.ERROR_MESSAGE);
             txtfecha_caducidad.requestFocus(); // sirve para ubicar el cursor en el cuadro de texto
             return null;
-        }if (!utilidades.validarCodigoNumeros(txtcopro.getText())) {
+        }*/
+        if (!utilidades.validarCodigoNumeros(txtcopro.getText())) {
             JOptionPane.showMessageDialog(frameGestionContable, "Ingrese numeros en el campo Codigo","ERROR",JOptionPane.ERROR_MESSAGE);
             txtcopro.requestFocus();
             return null;            
@@ -182,8 +186,12 @@ public class GestionInventario {
             inventario.setPreciomayorista(txtpreciomayorista.getText());
             inventario.setPreciocliente_fijo(txtprecio_clientefijo.getText());
             inventario.setPreciocliente_normal(txtprecio_clientenormal.getText());
-            inventario.setFecha_caducidad(txtfecha_caducidad.getText());
-            
+            inventario.setFecha_caducidad(jDateVencimiento.getDate());
+            if (isEditar) {
+                inventario.setFecha_actualizacion(new Date());
+            }else{
+                inventario.setFecha_registro(new Date());
+            }
             //System.out.println(inventario.toString());
             return inventario;
     

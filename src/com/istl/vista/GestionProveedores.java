@@ -2,6 +2,8 @@
 package com.istl.vista;
 
 import com.istloja.modelo.Proveedores;
+import com.toedter.calendar.JDateChooser;
+import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -19,9 +21,10 @@ public class GestionProveedores {
     private JTextField txttelefonop;
     private JTextField txtcorreopro;
     private JTextField txtdireccionpro;
+    private JDateChooser JDateProveedorVencimiento;
     private JFrame frameGestionContable;
 
-    public GestionProveedores(JTextField txtruc, JTextField txtrazon, JTextField txtactividad, JTextField txtnombrep, JTextField txtapellidop, JTextField txttelefonop, JTextField txtcorreopro, JTextField txtdireccionpro, JFrame frameGestionContable) {
+    public GestionProveedores(JTextField txtruc, JTextField txtrazon, JTextField txtactividad, JTextField txtnombrep, JTextField txtapellidop, JTextField txttelefonop, JTextField txtcorreopro, JTextField txtdireccionpro, JDateChooser JDateProveedorVencimiento, JFrame frameGestionContable) {
         this.txtruc = txtruc;
         this.txtrazon = txtrazon;
         this.txtactividad = txtactividad;
@@ -30,8 +33,11 @@ public class GestionProveedores {
         this.txttelefonop = txttelefonop;
         this.txtcorreopro = txtcorreopro;
         this.txtdireccionpro = txtdireccionpro;
+        this.JDateProveedorVencimiento = JDateProveedorVencimiento;
         this.frameGestionContable = frameGestionContable;
     }
+
+    
 
     public JTextField getTxtruc() {
         return txtruc;
@@ -97,6 +103,15 @@ public class GestionProveedores {
         this.txtdireccionpro = txtdireccionpro;
     }
 
+    public JDateChooser getJDateProveedorVencimiento() {
+        return JDateProveedorVencimiento;
+    }
+
+    public void setJDateProveedorVencimiento(JDateChooser JDateProveedorVencimiento) {
+        this.JDateProveedorVencimiento = JDateProveedorVencimiento;
+    }
+    
+
     
 
     void limpiarCamposProveedor() {
@@ -108,8 +123,9 @@ public class GestionProveedores {
         txttelefonop.setText("");
         txtcorreopro.setText("");
         txtdireccionpro.setText("");
+        JDateProveedorVencimiento.setDate(null);
     }
-    public Proveedores guardarEditar(){
+    public Proveedores guardarEditar(boolean isEditar){
     if (txtruc.getText().isEmpty()) {
             JOptionPane.showMessageDialog(frameGestionContable, "El campo Ruc no tiene datos","ERROR",JOptionPane.ERROR_MESSAGE);
             txtruc.requestFocus(); // sirve para ubicar el cursor en el cuadro de texto
@@ -156,6 +172,13 @@ public class GestionProveedores {
         proveedores.setTelefono(txttelefonop.getText());
         proveedores.setCorreo(txtcorreopro.getText());
         proveedores.setDireccionpro(txtdireccionpro.getText());
+        proveedores.setFecha_vencimientop(JDateProveedorVencimiento.getDate());
+        
+        if (isEditar) {
+            proveedores.setFecha_actualizacion(new Date());
+        }else{
+            proveedores.setFecha_registro(new Date());
+        }
         
         return proveedores;
         

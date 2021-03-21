@@ -1,5 +1,7 @@
 package com.istloja.utilidad;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -97,5 +99,10 @@ public class Utilidades {
             return false;
         }
     
+    }
+    public String formatoFecha(Date fecha){
+        
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+        return f.format(fecha);
     }
 }

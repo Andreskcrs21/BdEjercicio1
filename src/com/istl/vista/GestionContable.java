@@ -58,10 +58,11 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
         modelTableProductos = new modelTableProductos(controladorInventario.obtenerProductos(),this);
         initComponents();
         utilidades = new Utilidades();
+        jrbcedula.setSelected(true);
         
-        gestionPersona = new GestionPersona(txtcedula, txtnombre, txtapellidos, txtdireccion, txttelefono, txtcorreo, combogenero, utilidades, this);
-        gestionInventario = new GestionInventario(txtcopro, txtcanpro, txtdespro, txtprecompra_siniva, txtprecompra_coniva, txtpreciomayorista, txtprecio_clientefijo, txtprecio_clientenormal, txtfecha_caducidad, this, utilidades);
-        gestionProveedor = new GestionProveedores(txtruc, txtrazon, txtactividad, txtnombrep, txtapellidop, txttelefonop, txtcorreopro, txtdireccionpro, this);
+        gestionPersona = new GestionPersona(txtcedula, txtnombre, txtapellidos, txtdireccion, txttelefono, txtcorreo, combogenero, jDateFechaNacimiento, utilidades, this);
+        gestionInventario = new GestionInventario(txtcopro, txtcanpro, txtdespro, txtprecompra_siniva, txtprecompra_coniva, txtpreciomayorista, txtprecio_clientefijo, txtprecio_clientenormal, jDateVencimiento, this, utilidades);
+        gestionProveedor = new GestionProveedores(txtruc, txtrazon, txtactividad, txtnombrep, txtapellidop, txttelefonop, txtcorreopro, txtdireccionpro, jDateProveedorVencimiento, this);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -75,7 +76,9 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
         jTable3 = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jFrame1 = new javax.swing.JFrame();
+        jFrame2 = new javax.swing.JFrame();
+        jTabbedPane = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         botguardarCliente = new javax.swing.JButton();
         boteditarCliente = new javax.swing.JButton();
@@ -98,6 +101,10 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
         txtcorreo = new javax.swing.JTextField();
         combogenero = new javax.swing.JComboBox<>();
         jLabel25 = new javax.swing.JLabel();
+        jrbcedula = new javax.swing.JRadioButton();
+        jrbpasaporte = new javax.swing.JRadioButton();
+        jLabel22 = new javax.swing.JLabel();
+        jDateFechaNacimiento = new com.toedter.calendar.JDateChooser();
         jScrollPane6 = new javax.swing.JScrollPane();
         tablacliente = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
@@ -121,6 +128,8 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
         txtapellidop = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
         txtcorreopro = new javax.swing.JTextField();
+        jLabel32 = new javax.swing.JLabel();
+        jDateProveedorVencimiento = new com.toedter.calendar.JDateChooser();
         jLabel9 = new javax.swing.JLabel();
         boteditarProveedor = new javax.swing.JButton();
         boteliminarProveedor = new javax.swing.JButton();
@@ -130,7 +139,6 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
         jLabel17 = new javax.swing.JLabel();
         comboBusquedaProveedor = new javax.swing.JComboBox<>();
         txtcomboProveedores = new javax.swing.JTextField();
-        botBuscarComboProveedores = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
@@ -151,7 +159,7 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         txtprecio_clientefijo = new javax.swing.JTextField();
-        txtfecha_caducidad = new javax.swing.JTextField();
+        jDateVencimiento = new com.toedter.calendar.JDateChooser();
         botguardarprod = new javax.swing.JButton();
         boteditarprod = new javax.swing.JButton();
         boteliminarprod = new javax.swing.JButton();
@@ -221,6 +229,28 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
         ));
         jScrollPane4.setViewportView(jTable4);
 
+        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
+        jFrame1.getContentPane().setLayout(jFrame1Layout);
+        jFrame1Layout.setHorizontalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jFrame1Layout.setVerticalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jFrame2Layout = new javax.swing.GroupLayout(jFrame2.getContentPane());
+        jFrame2.getContentPane().setLayout(jFrame2Layout);
+        jFrame2Layout.setHorizontalGroup(
+            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jFrame2Layout.setVerticalGroup(
+            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema Contable");
 
@@ -272,13 +302,14 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Registro de Personas");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Cliente"));
         jPanel1.setToolTipText("");
         jPanel1.setName(""); // NOI18N
 
-        jLabel2.setText("Cedula");
+        jLabel2.setText("DNI");
 
         jLabel3.setText("Nombres");
 
@@ -310,53 +341,70 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
             }
         });
 
-        combogenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
+        combogenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No definido", "Masculino", "Femenino" }));
 
         jLabel25.setText("Genero");
+
+        jrbcedula.setText("Cedula");
+
+        jrbpasaporte.setText("Pasaporte");
+
+        jLabel22.setText("Fecha de nacimiento");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(79, 79, 79)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
+                    .addComponent(jLabel22)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2))
-                        .addComponent(jLabel6)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(7, 7, 7)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGap(78, 78, 78)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel7)
-                                .addComponent(jLabel25)))))
-                .addGap(57, 57, 57)
+                                .addComponent(jLabel5)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel2))
+                                    .addComponent(jLabel6))))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(88, 88, 88)
+                            .addComponent(jLabel25))))
+                .addGap(60, 60, 60)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(combogenero, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtcorreo)
-                            .addComponent(txtdireccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
+                            .addComponent(txtdireccion, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtapellidos, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtnombre)
-                            .addComponent(txttelefono)
-                            .addComponent(txtcedula))
-                        .addGap(75, 75, 75))))
+                            .addComponent(txttelefono))
+                        .addGap(75, 75, 75))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(combogenero, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jrbcedula)
+                                .addGap(18, 18, 18)
+                                .addComponent(jrbpasaporte))
+                            .addComponent(jDateFechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE))
+                        .addGap(71, 71, 71))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
                     .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jrbcedula)
+                    .addComponent(jrbpasaporte))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -375,11 +423,15 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txtcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
                     .addComponent(combogenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 16, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jDateFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel22))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tablacliente.setModel(modeloTablePersonaV2);
@@ -402,65 +454,62 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(279, 279, 279)
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane6)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(botguardarCliente)
-                        .addGap(86, 86, 86)
-                        .addComponent(boteditarCliente)
-                        .addGap(97, 97, 97)
-                        .addComponent(boteliminarCliente)
-                        .addGap(80, 80, 80)
-                        .addComponent(bottraerCliente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botLimpiarCamposCliente)
-                        .addContainerGap())
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addGap(54, 54, 54)
+                                .addComponent(botguardarCliente)
+                                .addGap(63, 63, 63)
+                                .addComponent(boteditarCliente)
+                                .addGap(81, 81, 81)
+                                .addComponent(boteliminarCliente)
+                                .addGap(85, 85, 85)
+                                .addComponent(bottraerCliente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                                .addComponent(botLimpiarCamposCliente)
+                                .addGap(43, 43, 43))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(comboBusquedaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtParametroBusqueda))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 42, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(18, 18, 18)
-                        .addComponent(comboBusquedaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtParametroBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(jLabel1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addComponent(jScrollPane6)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(6, 6, 6)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botguardarCliente)
                     .addComponent(boteditarCliente)
                     .addComponent(boteliminarCliente)
                     .addComponent(bottraerCliente)
                     .addComponent(botLimpiarCamposCliente))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGap(25, 25, 25)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(comboBusquedaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtParametroBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         jPanel1.getAccessibleContext().setAccessibleName("");
 
-        jTabbedPane2.addTab("Clientes", jPanel3);
+        jTabbedPane.addTab("Clientes", jPanel3);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Proveedor"));
 
@@ -480,6 +529,8 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
 
         jLabel26.setText("DIRECCION");
 
+        jLabel32.setText("Fecha de Vencimiento");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -487,6 +538,7 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(68, 68, 68)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel32)
                     .addComponent(jLabel26)
                     .addComponent(jLabel10)
                     .addComponent(jLabel16)
@@ -497,45 +549,44 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
                     .addComponent(jLabel11))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtactividad, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtdireccionpro, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txttelefonop, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtrazon, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtruc, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtnombrep, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtapellidop, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtcorreopro, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(112, Short.MAX_VALUE))
+                    .addComponent(txtruc)
+                    .addComponent(txtrazon)
+                    .addComponent(txtactividad)
+                    .addComponent(txtnombrep)
+                    .addComponent(txtdireccionpro)
+                    .addComponent(txtapellidop, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
+                    .addComponent(txttelefonop)
+                    .addComponent(txtcorreopro)
+                    .addComponent(jDateProveedorVencimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(83, 83, 83))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(txtruc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(txtrazon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(txtrazon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
                     .addComponent(txtactividad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtnombrep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
-                .addGap(21, 21, 21)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(txtnombrep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(txtapellidop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
                     .addComponent(txttelefonop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(txtcorreopro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -543,7 +594,11 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26)
                     .addComponent(txtdireccionpro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel32)
+                    .addComponent(jDateProveedorVencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -584,70 +639,59 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
             }
         });
 
-        botBuscarComboProveedores.setText("Buscar Proveedor");
-        botBuscarComboProveedores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botBuscarComboProveedoresActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane5)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(114, 114, 114)
-                        .addComponent(botguardarProveedor)
-                        .addGap(137, 137, 137)
-                        .addComponent(boteditarProveedor)
-                        .addGap(127, 127, 127)
-                        .addComponent(boteliminarProveedor))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel9))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jLabel17)
-                .addGap(18, 18, 18)
-                .addComponent(comboBusquedaProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtcomboProveedores)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botBuscarComboProveedores)
-                .addGap(20, 20, 20))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addGap(131, 131, 131)
+                            .addComponent(botguardarProveedor)
+                            .addGap(102, 102, 102)
+                            .addComponent(boteditarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(99, 99, 99)
+                            .addComponent(boteliminarProveedor))
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addComponent(jLabel17)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(comboBusquedaProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtcomboProveedores, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE))
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addComponent(jLabel9)
+                                    .addGap(0, 0, Short.MAX_VALUE))))))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(boteditarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botguardarProveedor)
+                    .addComponent(boteditarProveedor)
                     .addComponent(boteliminarProveedor))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
                     .addComponent(comboBusquedaProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtcomboProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botBuscarComboProveedores))
+                    .addComponent(jLabel17))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Proveedores", jPanel4);
+        jTabbedPane.addTab("Proveedores", jPanel4);
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel18.setText("Registro Inventario");
@@ -670,48 +714,48 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
 
         jLabel30.setText("Precio Cliente Normal");
 
-        jLabel31.setText("Fecha de vencimiento");
+        jLabel31.setText("Fecha de caducacion");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(128, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel31)
-                    .addComponent(jLabel30)
-                    .addComponent(jLabel29)
-                    .addComponent(jLabel28)
-                    .addComponent(jLabel27)
-                    .addComponent(jLabel21)
                     .addComponent(jLabel19)
+                    .addComponent(jLabel20)
                     .addComponent(jLabel23)
-                    .addComponent(jLabel20))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel21)
+                    .addComponent(jLabel27)
+                    .addComponent(jLabel28)
+                    .addComponent(jLabel29)
+                    .addComponent(jLabel30))
+                .addGap(43, 43, 43)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtdespro, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtcopro, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtcanpro, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtprecompra_siniva, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtprecompra_coniva, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtpreciomayorista, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtprecio_clientenormal, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtprecio_clientefijo, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtfecha_caducidad, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(117, 117, 117))
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtdespro, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
+                        .addComponent(txtcopro)
+                        .addComponent(txtcanpro)
+                        .addComponent(txtprecompra_siniva)
+                        .addComponent(txtprecompra_coniva)
+                        .addComponent(txtpreciomayorista)
+                        .addComponent(txtprecio_clientenormal)
+                        .addComponent(txtprecio_clientefijo))
+                    .addComponent(jDateVencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
                     .addComponent(txtcopro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtcanpro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel23))
+                    .addComponent(jLabel23)
+                    .addComponent(txtcanpro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
@@ -737,10 +781,10 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
                     .addComponent(jLabel30)
                     .addComponent(txtprecio_clientenormal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel31)
-                    .addComponent(txtfecha_caducidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                    .addComponent(jDateVencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         botguardarprod.setText("Guardar");
@@ -784,29 +828,32 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane7)
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel18)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel24)
-                                .addGap(18, 18, 18)
-                                .addComponent(comoboBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtbusquedaComboProductos)))))
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel18)
+                                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(136, 136, 136)
+                        .addComponent(botguardarprod)
+                        .addGap(115, 115, 115)
+                        .addComponent(boteditarprod)
+                        .addGap(118, 118, 118)
+                        .addComponent(boteliminarprod)
+                        .addGap(0, 254, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(140, 140, 140)
-                .addComponent(botguardarprod)
-                .addGap(103, 103, 103)
-                .addComponent(boteditarprod)
-                .addGap(127, 127, 127)
-                .addComponent(boteliminarprod)
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel24)
+                .addGap(18, 18, 18)
+                .addComponent(comoboBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtbusquedaComboProductos)
+                .addGap(18, 18, 18))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -814,36 +861,37 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
                 .addContainerGap()
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botguardarprod)
                     .addComponent(boteditarprod)
                     .addComponent(boteliminarprod))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtbusquedaComboProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comoboBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel24))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
+                .addGap(19, 19, 19)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel24)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(comoboBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtbusquedaComboProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Inventario", jPanel5);
+        jTabbedPane.addTab("Inventario", jPanel5);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 751, Short.MAX_VALUE)
+            .addGap(0, 834, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 708, Short.MAX_VALUE)
+            .addGap(0, 645, Short.MAX_VALUE)
         );
 
-        jTabbedPane2.addTab("Ventas", jPanel6);
+        jTabbedPane.addTab("Ventas", jPanel6);
 
         jMenu1.setText("Archivos");
 
@@ -894,14 +942,14 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jTabbedPane))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 736, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63))
         );
 
         pack();
@@ -950,7 +998,10 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
         if (controladorPersona.buscarpersona(txtcedula.getText())!=null) {
             JOptionPane.showMessageDialog(rootPane, "El numero de cedula ya se encuentra registrado en el sistema");
         }else{
-            Persona personaGuardar = gestionPersona.guardarEditar();
+            Persona personaGuardar = gestionPersona.guardarEditar(false);
+            if (jDateFechaNacimiento.getDate()!=null) {
+                personaGuardar.setFecha_nacimiento(jDateFechaNacimiento.getDate());
+            }
             if (personaGuardar != null) {
                 if(controladorPersona.registrarPersona(personaGuardar)){
                     JOptionPane.showMessageDialog(rootPane, "Persona registrada correctamente");
@@ -966,7 +1017,7 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
     
     }
     public void guardarProveedor(){
-        Proveedores proveedorGuardar = gestionProveedor.guardarEditar();
+        Proveedores proveedorGuardar = gestionProveedor.guardarEditar(false);
         if (proveedorGuardar != null) {
             if (controladorProveedor.registrarProveedor(proveedorGuardar)) {
             JOptionPane.showMessageDialog(rootPane, "Proveedor guardado con éxito.");
@@ -978,7 +1029,7 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
         }
     }
     public void guardarProducto(){
-        Inventario productoGuardar = gestionInventario.guardarEditar();
+        Inventario productoGuardar = gestionInventario.guardarEditar(false);
         if (productoGuardar != null) {
             if(controladorInventario.registrarInventario(productoGuardar)){
                 JOptionPane.showMessageDialog(rootPane, "Producto guardado correctamente");
@@ -998,7 +1049,7 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
             JOptionPane.showMessageDialog(rootPane, "No hay una persona seleccionada para editar");
             return;
         }
-        Persona personaEditarLocal = gestionPersona.guardarEditar();
+        Persona personaEditarLocal = gestionPersona.guardarEditar(true);
         if (personaEditarLocal != null) {
             personaEditarLocal.setIdPersona(personaEditar.getIdPersona());
             if (controladorPersona.editarpersona(personaEditarLocal)) {
@@ -1018,7 +1069,7 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
             JOptionPane.showMessageDialog(rootPane, "No hay un producto seleccionado para editar");
             return;
         }
-        Inventario productoEditarLocal = gestionInventario.guardarEditar();
+        Inventario productoEditarLocal = gestionInventario.guardarEditar(true);
         if (productoEditarLocal != null) {
             productoEditarLocal.setIdinventario(productoEditar.getIdinventario());
             if (controladorInventario.editarProducto(productoEditarLocal)) {
@@ -1037,7 +1088,7 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
             JOptionPane.showMessageDialog(rootPane, "No hay un proveedor seleccionado para editar");
             return;
         }
-        Proveedores proveedorEditarLocal = gestionProveedor.guardarEditar();
+        Proveedores proveedorEditarLocal = gestionProveedor.guardarEditar(true);
         if (proveedorEditarLocal != null) {
             proveedorEditarLocal.setIdProveedor(proveedorEditar.getIdProveedor());
             if (controladorProveedor.editarProveedor(proveedorEditarLocal)) {
@@ -1056,14 +1107,16 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
     // Metodos para eliminar 
     
     public void eliminarpersona(){
+         
+        
     if (personaEditar == null) {
             JOptionPane.showMessageDialog(rootPane, "No hay persona seleccionada para eliminar");
             return;
         }
-        Persona personaEliminarLocal = gestionPersona.guardarEditar();
-        if (personaEliminarLocal != null) {
-            personaEliminarLocal.setIdPersona(personaEditar.getIdPersona());
-            if (controladorPersona.eliminarpersona(personaEliminarLocal)) {
+       // Persona personaEliminarLocal = gestionPersona.guardarEditar();
+        if (personaEditar != null) {
+            personaEditar.setIdPersona(personaEditar.getIdPersona());
+            if (controladorPersona.eliminarpersona(personaEditar)) {
                 JOptionPane.showMessageDialog(rootPane, "Persona eliminada correctamente");
                 gestionPersona.limpiarCamposPersona();
                 personaEditar = null;
@@ -1079,10 +1132,10 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
             JOptionPane.showMessageDialog(rootPane, "No hay persona seleccionada para eliminar");
             return;
         }
-        Inventario productoEliminarLocal = gestionInventario.guardarEditar();
-        if (productoEliminarLocal != null) {
-            productoEliminarLocal.setIdinventario(productoEditar.getIdinventario());
-            if (controladorInventario.eliminarProducto(productoEliminarLocal)) {
+       
+        if (productoEditar != null) {
+            productoEditar.setIdinventario(productoEditar.getIdinventario());
+            if (controladorInventario.eliminarProducto(productoEditar)) {
                 JOptionPane.showMessageDialog(rootPane, "Producto eliminado correctamente");
                 gestionInventario.limpiarcamposProducto();
                 productoEditar = null;
@@ -1098,10 +1151,10 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
             JOptionPane.showMessageDialog(rootPane, "No hay un proveedor seleccionado para eliminar");
             return;
         }
-        Proveedores provedorEliminarLocal = gestionProveedor.guardarEditar();
-        if (provedorEliminarLocal != null) {
-            provedorEliminarLocal.setIdProveedor(proveedorEditar.getIdProveedor());
-            if (controladorProveedor.eliminarProveedores(provedorEliminarLocal)) {
+        
+        if (proveedorEditar != null) {
+            proveedorEditar.setIdProveedor(proveedorEditar.getIdProveedor());
+            if (controladorProveedor.eliminarProveedores(proveedorEditar)) {
                 JOptionPane.showMessageDialog(rootPane, "Proveedor eliminado correctamente");
                 gestionProveedor.limpiarCamposProveedor();
                 proveedorEditar = null;
@@ -1291,47 +1344,23 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
         eliminarProveedores();
     }//GEN-LAST:event_boteliminarProveedorActionPerformed
 
-    private void botBuscarComboProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botBuscarComboProveedoresActionPerformed
-        if (comboBusquedaProveedor.getSelectedItem().equals("Ruc")) {
-            List<Proveedores> proveedorRuc = controladorProveedor.buscarRuc(txtcomboProveedores.getText());        
-            modelTableProveedores.setProveedores(proveedorRuc);
-            modelTableProveedores.fireTableDataChanged();    
-        }if (comboBusquedaProveedor.getSelectedItem().equals("Razon Social")) {
-            List<Proveedores> proveedorRazon = controladorProveedor.buscarRazon(txtcomboProveedores.getText());        
-            modelTableProveedores.setProveedores(proveedorRazon);
-            modelTableProveedores.fireTableDataChanged(); 
-        }if (comboBusquedaProveedor.getSelectedItem().equals("Tipo de Actividad")) {
-            List<Proveedores> proveedorActividad = controladorProveedor.buscarActividad(txtcomboProveedores.getText());        
-            modelTableProveedores.setProveedores(proveedorActividad);
-            modelTableProveedores.fireTableDataChanged(); 
-        }if (comboBusquedaProveedor.getSelectedItem().equals("Nombre de Representante")) {
-            List<Proveedores> proveedorNombreRepresentante = controladorProveedor.buscarNombreRepresentante(txtcomboProveedores.getText());        
-            modelTableProveedores.setProveedores(proveedorNombreRepresentante);
-            modelTableProveedores.fireTableDataChanged(); 
-        }if (comboBusquedaProveedor.getSelectedItem().equals("Apellido de Representante")) {
-            List<Proveedores> proveedorApellidoRepresentante = controladorProveedor.buscarApellidoRepresentante(txtcomboProveedores.getText());        
-            modelTableProveedores.setProveedores(proveedorApellidoRepresentante);
-            modelTableProveedores.fireTableDataChanged(); 
-        }if (comboBusquedaProveedor.getSelectedItem().equals("Telefono")) {
-            List<Proveedores> proveedorTelefono = controladorProveedor.buscarTelefono(txtcomboProveedores.getText());        
-            modelTableProveedores.setProveedores(proveedorTelefono);
-            modelTableProveedores.fireTableDataChanged(); 
-        }if (comboBusquedaProveedor.getSelectedItem().equals("Correo")) {
-            List<Proveedores> proveedorCorreo = controladorProveedor.buscarCorreo(txtcomboProveedores.getText());        
-            modelTableProveedores.setProveedores(proveedorCorreo);
-            modelTableProveedores.fireTableDataChanged(); 
-        }
-        
-    }//GEN-LAST:event_botBuscarComboProveedoresActionPerformed
-
     private void txtcedulaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtcedulaFocusLost
-        if (txtcedula.getText().isEmpty()) {
+        if (jrbcedula.isSelected()) {
+            if (txtcedula.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "El campo Cedula no tiene datos","ERROR",JOptionPane.ERROR_MESSAGE);
             txtcedula.requestFocus(); // sirve para ubicar el cursor en el cuadro de texto
             
-        }if (!utilidades.validadorDeCedula(txtcedula.getText())) {
+            }else if (!utilidades.validadorDeCedula(txtcedula.getText())) {
             JOptionPane.showMessageDialog(this, "Los datos ingresados en la cedula son invalidos","ERROR",JOptionPane.ERROR_MESSAGE);
             txtcedula.requestFocus();
+            
+            }
+        }else if (jrbpasaporte.isSelected()) {
+            if (txtcedula.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo Pasaporte no tiene datos","ERROR",JOptionPane.ERROR_MESSAGE);
+            txtcedula.requestFocus(); // sirve para ubicar el cursor en el cuadro de texto
+            }
+            
             
         }
         
@@ -1410,7 +1439,6 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botBuscarComboProveedores;
     private javax.swing.JButton botLimpiarCamposCliente;
     private javax.swing.JButton boteditarCliente;
     private javax.swing.JButton boteditarProveedor;
@@ -1429,6 +1457,11 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
     private javax.swing.JComboBox<String> comboBusquedaProveedor;
     private javax.swing.JComboBox<String> combogenero;
     private javax.swing.JComboBox<String> comoboBuscarProducto;
+    private com.toedter.calendar.JDateChooser jDateFechaNacimiento;
+    private com.toedter.calendar.JDateChooser jDateProveedorVencimiento;
+    private com.toedter.calendar.JDateChooser jDateVencimiento;
+    private javax.swing.JFrame jFrame1;
+    private javax.swing.JFrame jFrame2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1443,6 +1476,7 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
@@ -1453,6 +1487,7 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1476,12 +1511,14 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTabbedPane jTabbedPane;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTableProductos;
+    private javax.swing.JRadioButton jrbcedula;
+    private javax.swing.JRadioButton jrbpasaporte;
     private javax.swing.JMenuItem menuSalir;
     private javax.swing.JTable tablacliente;
     private javax.swing.JTable tableProveedores;
@@ -1499,7 +1536,6 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
     private javax.swing.JTextField txtdespro;
     private javax.swing.JTextField txtdireccion;
     private javax.swing.JTextField txtdireccionpro;
-    private javax.swing.JTextField txtfecha_caducidad;
     private javax.swing.JTextField txtnombre;
     private javax.swing.JTextField txtnombrep;
     private javax.swing.JTextField txtprecio_clientefijo;
@@ -1522,7 +1558,9 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
         txttelefono.setText(p.getTelefono());
         txtcorreo.setText(p.getCorreo());
         combogenero.setSelectedItem(p.getGenero());
+        jDateFechaNacimiento.setDate(p.getFecha_nacimiento());
         personaEditar = p;
+       
         
     }
 
@@ -1536,6 +1574,7 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
         txttelefonop.setText(p.getTelefono());
         txtcorreopro.setText(p.getCorreo());
         txtdireccionpro.setText(p.getDireccionpro());
+        jDateProveedorVencimiento.setDate(p.getFecha_vencimientop());
         
         proveedorEditar = p;
     }
@@ -1550,7 +1589,7 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
         txtpreciomayorista.setText(i.getPreciomayorista());
         txtprecio_clientefijo.setText(i.getPreciocliente_fijo());
         txtprecio_clientenormal.setText(i.getPreciocliente_normal());
-        txtfecha_caducidad.setText(i.getFecha_caducidad());
+        jDateVencimiento.setDate(i.getFecha_caducidad());
         productoEditar = i;
         
     }

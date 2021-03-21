@@ -4,6 +4,7 @@ package com.istloja.controlador;
 import com.istloja.conexionbd.BdEjercicio1;
 import com.istloja.modelo.Inventario;
 import com.istloja.modelo.Persona;
+import com.istloja.utilidad.Utilidades;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 import java.sql.SQLException;
@@ -15,13 +16,18 @@ import java.sql.ResultSet;
  * @author IdeaPad - S340
  */
 public class Inventariobd {
+    public Utilidades utilidades;
+
+    public Inventariobd() {
+        utilidades = new Utilidades();
+    }
     public boolean registrarInventario(Inventario inventario){
     
         boolean registrar = false;        
         Statement stm = null;        
         Connection con = null;        
                         
-        String sql = "INSERT INTO inventario (`codigo_pro`, `can_productos`, `descripcion`, `precio_compra_sin_iva`, `precio_compra_con_iva`,`precio_mayorista`, `precio_cliente_fijo`, `precio_cliente_normal`, `fecha_caducidad`) VALUES ('"
+        String sql = "INSERT INTO inventario (`codigo_pro`, `can_productos`, `descripcion`, `precio_compra_sin_iva`, `precio_compra_con_iva`,`precio_mayorista`, `precio_cliente_fijo`, `precio_cliente_normal`, `fecha_caducidad`, `fecha_registro`) VALUES ('"
                 +inventario.getCoproducto()+"', '"
                 +inventario.getCanproductos()+"', '"
                 +inventario.getDescripcion()+"', '"
@@ -30,7 +36,8 @@ public class Inventariobd {
                 +inventario.getPreciomayorista()+"','"
                 +inventario.getPreciocliente_fijo()+"','"
                 +inventario.getPreciocliente_normal()+"','"
-                +inventario.getFecha_caducidad()+"');";
+                +utilidades.formatoFecha(inventario.getFecha_caducidad())+"','"
+                +utilidades.formatoFecha(inventario.getFecha_registro())+"');";
                         
         try {
             BdEjercicio1  conexion = new BdEjercicio1();
@@ -53,9 +60,16 @@ public class Inventariobd {
         
         Connection con = null; //coenxion con la base de datos
         
-        String sql = "update inventario set codigo_pro = '"+inventario.getCoproducto()+"', can_productos = '"+inventario.getCanproductos()+"', descripcion = '"+inventario.getDescripcion()+"', precio_compra_sin_iva = '"+inventario.getPreciocompra_sin_iva()+"',"
-                + "precio_compra_con_iva = '"+inventario.getPreciocompra_con_iva()+"', precio_mayorista = '"+inventario.getPreciomayorista()+"', precio_cliente_fijo = '"+inventario.getPreciocliente_fijo()+"',"
-                + "precio_cliente_normal = '"+inventario.getPreciocliente_normal()+"', fecha_caducidad = '"+inventario.getFecha_caducidad()+"' where id_inventario = '"+inventario.getIdinventario()+"';";
+        String sql = "update inventario set codigo_pro = '"+inventario.getCoproducto()+"', "
+                + "can_productos = '"+inventario.getCanproductos()+"', "
+                + "descripcion = '"+inventario.getDescripcion()+"', "
+                + "precio_compra_sin_iva = '"+inventario.getPreciocompra_sin_iva()+"',"
+                + "precio_compra_con_iva = '"+inventario.getPreciocompra_con_iva()+"', "
+                + "precio_mayorista = '"+inventario.getPreciomayorista()+"', "
+                + "precio_cliente_fijo = '"+inventario.getPreciocliente_fijo()+"',"
+                + "precio_cliente_normal = '"+inventario.getPreciocliente_normal()+"', "
+                + "fecha_caducidad = '"+utilidades.formatoFecha(inventario.getFecha_caducidad())+"', "
+                + "fecha_actualizacion = '"+utilidades.formatoFecha(inventario.getFecha_actualizacion())+"' where id_inventario = '"+inventario.getIdinventario()+"';";
         try {
             BdEjercicio1  conexion = new BdEjercicio1();
             con = conexion.getConexion();
@@ -116,7 +130,7 @@ public class Inventariobd {
                 i.setPreciomayorista(rs.getString(7));
                 i.setPreciocliente_fijo(rs.getString(8));
                 i.setPreciocliente_normal(rs.getString(9));
-                i.setFecha_caducidad(rs.getString(10));
+                i.setFecha_caducidad(rs.getDate(10));
                 
                 listaProductos.add(i);
             }
@@ -153,7 +167,7 @@ public class Inventariobd {
                 i.setPreciomayorista(rs.getString(7));
                 i.setPreciocliente_fijo(rs.getString(8));
                 i.setPreciocliente_normal(rs.getString(9));
-                i.setFecha_caducidad(rs.getString(10));
+                i.setFecha_caducidad(rs.getDate(10));
             }
             stm.close();
             rs.close();
@@ -187,7 +201,7 @@ public class Inventariobd {
                 i.setPreciomayorista(rs.getString(7));
                 i.setPreciocliente_fijo(rs.getString(8));
                 i.setPreciocliente_normal(rs.getString(9));
-                i.setFecha_caducidad(rs.getString(10));
+                i.setFecha_caducidad(rs.getDate(10));
             }
             stm.close();
             rs.close();
@@ -220,7 +234,7 @@ public class Inventariobd {
                 i.setPreciomayorista(rs.getString(7));
                 i.setPreciocliente_fijo(rs.getString(8));
                 i.setPreciocliente_normal(rs.getString(9));
-                i.setFecha_caducidad(rs.getString(10));
+                i.setFecha_caducidad(rs.getDate(10));
             }
             stm.close();
             rs.close();
@@ -253,7 +267,7 @@ public class Inventariobd {
                 i.setPreciomayorista(rs.getString(7));
                 i.setPreciocliente_fijo(rs.getString(8));
                 i.setPreciocliente_normal(rs.getString(9));
-                i.setFecha_caducidad(rs.getString(10));
+                i.setFecha_caducidad(rs.getDate(10));
             }
             stm.close();
             rs.close();
@@ -286,7 +300,7 @@ public class Inventariobd {
                 i.setPreciomayorista(rs.getString(7));
                 i.setPreciocliente_fijo(rs.getString(8));
                 i.setPreciocliente_normal(rs.getString(9));
-                i.setFecha_caducidad(rs.getString(10));
+                i.setFecha_caducidad(rs.getDate(10));
             }
             stm.close();
             rs.close();

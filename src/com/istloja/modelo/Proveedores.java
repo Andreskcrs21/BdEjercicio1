@@ -22,11 +22,13 @@ public class Proveedores {
     private String correo;
     private String direccionpro;
     private Date fecha_registro;
+    private Date fecha_actualizacion;
+    private Date fecha_vencimientop;
     
     public Proveedores(){
     }
 
-    public Proveedores(int idProveedor, String ruc, String RazonSocial, String tipoActividad, String nombreRepresentante, String apellidoRepresentante, String telefono, String correo, String direccionpro, Date fecha_registro) {
+    public Proveedores(int idProveedor, String ruc, String RazonSocial, String tipoActividad, String nombreRepresentante, String apellidoRepresentante, String telefono, String correo, String direccionpro, Date fecha_registro, Date fecha_actualizacion, Date fecha_vencimientop) {
         this.idProveedor = idProveedor;
         this.ruc = ruc;
         this.RazonSocial = RazonSocial;
@@ -37,9 +39,11 @@ public class Proveedores {
         this.correo = correo;
         this.direccionpro = direccionpro;
         this.fecha_registro = fecha_registro;
+        this.fecha_actualizacion = fecha_actualizacion;
+        this.fecha_vencimientop = fecha_vencimientop;
     }
 
-   
+    
 
     public int getIdProveedor() {
         return idProveedor;
@@ -121,10 +125,32 @@ public class Proveedores {
         this.fecha_registro = fecha_registro;
     }
 
+    public Date getFecha_actualizacion() {
+        return fecha_actualizacion;
+    }
+
+    public void setFecha_actualizacion(Date fecha_actualizacion) {
+        this.fecha_actualizacion = fecha_actualizacion;
+    }
+
+    public Date getFecha_vencimientop() {
+        return fecha_vencimientop;
+    }
+
+    public void setFecha_vencimientop(Date fecha_vencimientop) {
+        this.fecha_vencimientop = fecha_vencimientop;
+    }
+
     @Override
     public String toString() {
-        return "Proveedores{" + "idProveedor=" + idProveedor + ", ruc=" + ruc + ", RazonSocial=" + RazonSocial + ", tipoActividad=" + tipoActividad + ", nombreRepresentante=" + nombreRepresentante + ", apellidoRepresentante=" + apellidoRepresentante + ", telefono=" + telefono + ", correo=" + correo + ", direccionpro=" + direccionpro + ", fecha_registro=" + fecha_registro + '}';
+        return "Proveedores{" + "idProveedor=" + idProveedor + ", ruc=" + ruc + ", RazonSocial=" + RazonSocial + ", tipoActividad=" + tipoActividad + ", nombreRepresentante=" + nombreRepresentante + ", apellidoRepresentante=" + apellidoRepresentante + ", telefono=" + telefono + ", correo=" + correo + ", direccionpro=" + direccionpro + ", fecha_registro=" + fecha_registro + ", fecha_actualizacion=" + fecha_actualizacion + ", fecha_vencimientop=" + fecha_vencimientop + '}';
     }
+    
+
+    
+    
+
+    
 
     
 
