@@ -1,14 +1,15 @@
 
 package com.istloja.controlador;
 import com.istloja.modelo.Persona;
-import com.mysql.jdbc.Connection;
+
 import java.sql.SQLException;
-import com.mysql.jdbc.Statement;
+
 import com.istloja.conexionbd.BdEjercicio1;
 import com.istloja.utilidad.Utilidades;
 import java.util.List;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.sql.*;
 
 /**
  *

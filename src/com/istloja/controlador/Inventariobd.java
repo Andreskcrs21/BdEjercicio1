@@ -5,12 +5,13 @@ import com.istloja.conexionbd.BdEjercicio1;
 import com.istloja.modelo.Inventario;
 import com.istloja.modelo.Persona;
 import com.istloja.utilidad.Utilidades;
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.Statement;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.ResultSet;
+
+import java.sql.*;
 /**
  *
  * @author IdeaPad - S340

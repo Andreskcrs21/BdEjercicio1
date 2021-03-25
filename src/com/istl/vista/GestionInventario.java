@@ -130,6 +130,14 @@ public class GestionInventario {
               
     
     }
+    void limpiarprecios(){
+        txtprecompra_siniva.setText("");
+        txtprecompra_coniva.setText("");
+        txtpreciomayorista.setText("");
+        txtprecio_clientefijo.setText("");
+        txtprecio_clientenormal.setText("");
+        
+    }
     public Inventario guardarEditar(boolean isEditar){
         if (txtcopro.getText().isEmpty()) {
             JOptionPane.showMessageDialog(frameGestionContable, "El campo Codigo no tiene datos","ERROR",JOptionPane.ERROR_MESSAGE);

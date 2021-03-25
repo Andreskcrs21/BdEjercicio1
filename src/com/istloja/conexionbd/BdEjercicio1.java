@@ -1,11 +1,11 @@
 
 package com.istloja.conexionbd;
 
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
+
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import java.sql.*;
 
 public class BdEjercicio1 {
     private final String base = "persona";

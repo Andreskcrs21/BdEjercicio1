@@ -8,13 +8,12 @@ package com.istloja.controlador;
 import com.istloja.conexionbd.BdEjercicio1;
 import com.istloja.modelo.Proveedores;
 import com.istloja.utilidad.Utilidades;
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.Statement;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.sql.*;
 /**
  *
  * @author IdeaPad - S340
