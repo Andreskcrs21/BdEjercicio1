@@ -5,7 +5,7 @@
  */
 package conexionbasedatos;
 
-import com.istl.vista.GestionContable;
+import com.istloja.vista.GestionContable;
 import com.istloja.conexionbd.BdEjercicio1;
 import com.istloja.controlador.Personabd;
 import com.istloja.modelo.Persona;

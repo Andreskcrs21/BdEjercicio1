@@ -1,5 +1,5 @@
 
-package com.istl.vista;
+package com.istloja.vista;
 
 import com.istloja.modelo.Proveedores;
 import com.toedter.calendar.JDateChooser;

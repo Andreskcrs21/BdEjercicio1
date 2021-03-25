@@ -1,7 +1,7 @@
 
 package com.istloja.modelTables;
 
-import com.istl.vista.GestionContable;
+import com.istloja.vista.GestionContable;
 import com.istloja.modelo.Persona;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;

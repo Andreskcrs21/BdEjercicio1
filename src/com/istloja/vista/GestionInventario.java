@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.istl.vista;
+package com.istloja.vista;
 
 import com.istloja.modelo.Inventario;
 import com.istloja.utilidad.Utilidades;
