@@ -313,4 +313,40 @@ public class Inventariobd {
         return listaProductos;
            
     }
+    public Inventario buscarVentas(String descripcion){
+        Connection co = null; //Sirve para conectar con a base de datos
+        Statement stm = null; //Sirve para preparar los datos
+        ResultSet rs = null;//Sentencia de JDBC para obtener valores de la base de datos.
+        Inventario i = null;
+            String sql = "SELECT * FROM persona.inventario where descripcion like \"%"+descripcion+"%\"";
+        
+        try {
+            co = new BdEjercicio1().getConexion();
+            stm = (Statement) co.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                i = new Inventario();
+                i.setIdinventario(rs.getInt(1));
+                i.setCoproducto(rs.getString(2));
+                i.setCanproductos(rs.getString(3));
+                i.setDescripcion(rs.getString(4));
+                i.setPreciocompra_sin_iva(rs.getString(5));
+                i.setPreciocompra_con_iva(rs.getString(6));
+                i.setPreciomayorista(rs.getString(7));
+                i.setPreciocliente_fijo(rs.getString(8));
+                i.setPreciocliente_normal(rs.getString(9));
+                i.setFecha_caducidad(rs.getDate(10));
+            }
+            stm.close();
+            rs.close();
+            co.close();
+        } catch (SQLException e) {
+            //System.out.println("Error:"+ e.getMessage());
+        }
+        return i;
+
+       
+           
+    }
+    
 }
