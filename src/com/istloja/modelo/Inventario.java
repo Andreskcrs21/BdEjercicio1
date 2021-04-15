@@ -20,6 +20,8 @@ public class Inventario {
     private Date fecha_caducidad;
     private Date fecha_registro;
     private Date fecha_actualizacion;
+    
+    private int cantidadProductoVender;
         
     public Inventario(){
     
@@ -136,6 +138,15 @@ public class Inventario {
     public void setFecha_actualizacion(Date fecha_actualizacion) {
         this.fecha_actualizacion = fecha_actualizacion;
     }
+
+    public int getCantidadProductoVender() {
+        return cantidadProductoVender;
+    }
+
+    public void setCantidadProductoVender(int cantidadProductoVender) {
+        this.cantidadProductoVender = cantidadProductoVender;
+    }
+    
 
     @Override
     public String toString() {

@@ -32,7 +32,7 @@ public class Acercade extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        botcerrar = new javax.swing.JButton();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -53,10 +53,10 @@ public class Acercade extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Sistema de Facturacion Local");
 
-        jButton1.setText("Cerrar");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        botcerrar.setText("Cerrar");
+        botcerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                botcerrarMouseClicked(evt);
             }
         });
 
@@ -75,7 +75,7 @@ public class Acercade extends javax.swing.JDialog {
                 .addContainerGap(38, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(botcerrar)
                 .addGap(131, 131, 131))
         );
         jPanel1Layout.setVerticalGroup(
@@ -86,7 +86,7 @@ public class Acercade extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(botcerrar)
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -104,17 +104,17 @@ public class Acercade extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void botcerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botcerrarMouseClicked
        
        this.dispose();
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_botcerrarMouseClicked
 
     /**
      * @param args the command line arguments
      */
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton botcerrar;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

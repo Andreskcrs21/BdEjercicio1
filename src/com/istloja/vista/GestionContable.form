@@ -292,7 +292,7 @@
                                       <Component id="txtParametroBusqueda" min="-2" pref="599" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="91" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="127" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -328,7 +328,7 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jScrollPane6" min="-2" pref="181" max="-2" attributes="0"/>
-                      <EmptySpace pref="227" max="32767" attributes="0"/>
+                      <EmptySpace pref="237" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -708,7 +708,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
@@ -717,11 +717,11 @@
                                       <Component id="boteditarProveedor" min="-2" pref="97" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                                       <Component id="boteliminarProveedor" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                                       <Component id="botlimpiarprov" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="109" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
@@ -759,7 +759,7 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jScrollPane5" min="-2" pref="191" max="-2" attributes="0"/>
-                      <EmptySpace pref="192" max="32767" attributes="0"/>
+                      <EmptySpace pref="202" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -797,7 +797,7 @@
                               <Component id="txtactividad" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtnombrep" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtdireccionpro" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtapellidop" pref="515" max="32767" attributes="0"/>
+                              <Component id="txtapellidop" pref="551" max="32767" attributes="0"/>
                               <Component id="txttelefonop" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtcorreopro" alignment="0" max="32767" attributes="0"/>
                               <Component id="jDateProveedorVencimiento" max="32767" attributes="0"/>
@@ -1030,7 +1030,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/com/istloja/resouce/img/escoba.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Limpiar"/>
+                <Property name="text" type="java.lang.String" value="Limpiar Campos"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botlimpiarprovActionPerformed"/>
@@ -1070,7 +1070,7 @@
                                               <Component id="boteliminarprod" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="85" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="121" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -1124,7 +1124,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane7" min="-2" pref="196" max="-2" attributes="0"/>
-                      <EmptySpace pref="181" max="32767" attributes="0"/>
+                      <EmptySpace pref="191" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1452,7 +1452,7 @@
                                       <Group type="102" attributes="0">
                                           <Component id="jLabel40" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="txtnomproductoventa" min="-2" pref="290" max="-2" attributes="0"/>
+                                          <Component id="txtproductoventa" min="-2" pref="290" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="jLabel41" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -1460,8 +1460,8 @@
                                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                                           <Component id="botagregarproducto" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="30" max="32767" attributes="0"/>
+                                          <Component id="botbusquedaAvanzada" max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="1" attributes="0">
@@ -1482,9 +1482,9 @@
                                           </Group>
                                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jTextField2" min="-2" pref="141" max="-2" attributes="0"/>
-                                              <Component id="jTextField3" min="-2" pref="141" max="-2" attributes="0"/>
-                                              <Component id="jTextField4" min="-2" pref="141" max="-2" attributes="0"/>
+                                              <Component id="txtsubtotalgeneral" min="-2" pref="141" max="-2" attributes="0"/>
+                                              <Component id="txtivageneral" min="-2" pref="141" max="-2" attributes="0"/>
+                                              <Component id="txttotalgeneral" min="-2" pref="141" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                                       </Group>
@@ -1496,7 +1496,7 @@
                                   <Component id="jScrollPane8" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel33" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="715" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -1515,30 +1515,30 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel40" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtnomproductoventa" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtproductoventa" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel41" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtcantidadproducto" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="botagregarproducto" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="botbusquedaAvanzada" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jScrollPane8" min="-2" pref="152" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel42" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtsubtotalgeneral" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel45" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="combotipopago" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel43" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtivageneral" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel44" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txttotalgeneral" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="263" max="32767" attributes="0"/>
                   </Group>
@@ -1556,10 +1556,10 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel40">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Descripcion"/>
+                <Property name="text" type="java.lang.String" value="Codigo"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtnomproductoventa">
+            <Component class="javax.swing.JTextField" name="txtproductoventa">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel41">
               <Properties>
@@ -1570,6 +1570,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="botagregarproducto">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/com/istloja/resouce/img/plus.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Agregar"/>
               </Properties>
               <Events>
@@ -1671,8 +1674,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtcedulaoruc">
                   <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtcedulaorucFocusLost"/>
-                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtcedulaorucKeyReleased"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtcedulaorucKeyPressed,borrarclientekeyPressed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel36">
@@ -1734,13 +1736,8 @@
               <SubComponents>
                 <Component class="javax.swing.JTable" name="tablaventas">
                   <Properties>
-                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="0">
-                        <Column editable="false" title="Cantidad" type="java.lang.Object"/>
-                        <Column editable="false" title="Descripcion" type="java.lang.Object"/>
-                        <Column editable="true" title="Subtotal" type="java.lang.Object"/>
-                        <Column editable="true" title="Total" type="java.lang.Object"/>
-                      </Table>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="modelTableVentas" type="code"/>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
@@ -1788,11 +1785,11 @@
                 <Property name="text" type="java.lang.String" value="TOTAL"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField2">
+            <Component class="javax.swing.JTextField" name="txtsubtotalgeneral">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField3">
+            <Component class="javax.swing.JTextField" name="txtivageneral">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField4">
+            <Component class="javax.swing.JTextField" name="txttotalgeneral">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel45">
               <Properties>
@@ -1813,10 +1810,16 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton2">
+            <Component class="javax.swing.JButton" name="botbusquedaAvanzada">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/com/istloja/resouce/img/search.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Busqueda Avanzada"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botbusquedaAvanzadaMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
